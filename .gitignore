@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Production
+.turbo
+*.tsbuildinfo
+next-env.d.ts
+
+# Misc
+.DS_Store
+*.pem
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & Secrets (NEVER COMMIT)
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Databases & local storage
+*.sqlite
+*.sqlite3
+*.db
+uploads/
+public/uploads/
+
+# Medusa
+.medusa/
+backend/.medusa/
+storefront/.next/
+
+# IDE / Editor
+.idea/
+*.swp
+*.swo

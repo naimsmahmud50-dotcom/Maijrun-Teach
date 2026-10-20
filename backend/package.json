@@ -1,16 +1,16 @@
 {
-  "name": "medusa-starter-default",
-  "version": "0.0.1",
-  "description": "A starter for Medusa projects.",
-  "author": "Medusa (https://medusajs.com)",
+  "name": "maijrun-backend",
+  "version": "0.1.0",
+  "description": "MAIJRUN Tech Headless E-Commerce Core & Admin API",
+  "author": "MAIJRUN Tech <dev@maijrun.com>",
   "license": "MIT",
   "keywords": [
-    "sqlite",
-    "postgres",
-    "typescript",
+    "maijrun",
+    "tech",
     "ecommerce",
     "headless",
-    "medusa"
+    "postgres",
+    "typescript"
   ],
   "scripts": {
     "build": "medusa build",

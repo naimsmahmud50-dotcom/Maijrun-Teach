@@ -4,8 +4,8 @@ import { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "404",
-  description: "Something went wrong",
+  title: "404 - Page Not Found",
+  description: "The requested page was not found on MAIJRUN Tech.",
 }
 
 export default function NotFound() {

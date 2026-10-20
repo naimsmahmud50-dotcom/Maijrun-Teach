@@ -1,9 +1,10 @@
 import { listCategories } from "@lib/data/categories"
 import { listCollections } from "@lib/data/collections"
 import { Text, clx } from "@medusajs/ui"
+import { brandConfig } from "@config/brand"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "@modules/layout/components/medusa-cta"
+import BrandCTA from "@modules/layout/components/brand-cta"
 
 export default async function Footer() {
   const { collections } = await listCollections({
@@ -12,16 +13,26 @@ export default async function Footer() {
   const productCategories = await listCategories()
 
   return (
-    <footer className="border-t border-ui-border-base w-full">
+    <footer className="border-t border-ui-border-base w-full bg-slate-950/40">
       <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
-          <div>
+        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-24 sm:py-32">
+          <div className="flex flex-col gap-y-3 max-w-sm">
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+              className="flex items-center gap-2 hover:opacity-90 transition-opacity"
             >
-              Medusa Store
+              <img
+                src={brandConfig.logo.src}
+                alt={brandConfig.name}
+                className="h-8 w-auto object-contain"
+              />
             </LocalizedClientLink>
+            <p className="text-small-regular text-ui-fg-subtle">
+              {brandConfig.description}
+            </p>
+            <p className="text-xsmall-regular text-ui-fg-muted">
+              Email: {brandConfig.supportEmail} | {brandConfig.location}
+            </p>
           </div>
           <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
             {productCategories && productCategories?.length > 0 && (
@@ -109,36 +120,40 @@ export default async function Footer() {
               </div>
             )}
             <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
+              <span className="txt-small-plus txt-ui-fg-base">About {brandConfig.name}</span>
               <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                 <li>
+                  <LocalizedClientLink
+                    href="/about"
+                    className="hover:text-ui-fg-base"
+                  >
+                    About Us
+                  </LocalizedClientLink>
+                </li>
+                <li>
+                  <LocalizedClientLink
+                    href="/warranty"
+                    className="hover:text-ui-fg-base"
+                  >
+                    Warranty Policy
+                  </LocalizedClientLink>
+                </li>
+                <li>
                   <a
-                    href="https://github.com/medusajs"
+                    href={brandConfig.socials.facebook}
                     target="_blank"
                     rel="noreferrer"
                     className="hover:text-ui-fg-base"
                   >
-                    GitHub
+                    Facebook Page
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://docs.medusajs.com"
-                    target="_blank"
-                    rel="noreferrer"
+                    href={`mailto:${brandConfig.supportEmail}`}
                     className="hover:text-ui-fg-base"
                   >
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/medusajs/nextjs-starter-medusa"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Source code
+                    Contact Support
                   </a>
                 </li>
               </ul>
@@ -147,9 +162,9 @@ export default async function Footer() {
         </div>
         <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
           <Text className="txt-compact-small">
-            © {new Date().getFullYear()} Medusa Store. All rights reserved.
+            {brandConfig.footer.copyright}
           </Text>
-          <MedusaCTA />
+          <BrandCTA />
         </div>
       </div>
     </footer>

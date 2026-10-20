@@ -9,6 +9,10 @@ type ShippingDetailsProps = {
 }
 
 const ShippingDetails = ({ order }: ShippingDetailsProps) => {
+  const shippingMethod = (order as any).shipping_methods?.[0]
+  const methodName = shippingMethod?.name || "Standard Shipping"
+  const isInside = methodName.toLowerCase().includes("inside dhaka")
+
   return (
     <div>
       <Heading level="h2" className="flex flex-row text-3xl-regular my-6">
@@ -35,6 +39,7 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
             {order.shipping_address?.city}
           </Text>
           <Text className="txt-medium text-ui-fg-subtle">
+            {order.shipping_address?.province ? `${order.shipping_address.province}, ` : ""}
             {order.shipping_address?.country_code?.toUpperCase()}
           </Text>
         </div>
@@ -45,7 +50,7 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
         >
           <Text className="txt-medium-plus text-ui-fg-base mb-1">Contact</Text>
           <Text className="txt-medium text-ui-fg-subtle">
-            {order.shipping_address?.phone}
+            {order.shipping_address?.phone || "No phone provided"}
           </Text>
           <Text className="txt-medium text-ui-fg-subtle">{order.email}</Text>
         </div>
@@ -54,14 +59,19 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
           className="flex flex-col w-1/3"
           data-testid="shipping-method-summary"
         >
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">Method</Text>
+          <Text className="txt-medium-plus text-ui-fg-base mb-1">Method &amp; Timeframe</Text>
           <Text className="txt-medium text-ui-fg-subtle">
-            {(order as any).shipping_methods[0]?.name} (
+            {methodName} (
             {convertToLocale({
-              amount: order.shipping_methods?.[0].total ?? 0,
+              amount: shippingMethod?.total ?? 0,
               currency_code: order.currency_code,
             })}
             )
+          </Text>
+          <Text className="text-xs text-blue-600 dark:text-blue-400 mt-1 font-medium">
+            {isInside
+              ? "⚡ Estimated Delivery: 24–48 Hours (Express Hand Delivery)"
+              : "📦 Estimated Delivery: 2–4 Days (Nationwide Courier)"}
           </Text>
         </div>
       </div>

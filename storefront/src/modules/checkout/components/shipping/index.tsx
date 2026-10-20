@@ -266,9 +266,18 @@ const Shipping: React.FC<ShippingProps> = ({
                           <MedusaRadio
                             checked={option.id === shippingMethodId}
                           />
-                          <span className="text-base-regular">
-                            {option.name}
-                          </span>
+                          <div className="flex flex-col">
+                            <span className="text-base-regular font-medium">
+                              {option.name}
+                            </span>
+                            <span className="text-xs text-ui-fg-muted">
+                              {option.name.toLowerCase().includes("inside dhaka")
+                                ? "⚡ Express delivery within Dhaka city (24–48 hours)"
+                                : option.name.toLowerCase().includes("outside dhaka")
+                                ? "📦 Courier delivery across all 64 districts (2–4 days)"
+                                : "Standard nationwide delivery"}
+                            </span>
+                          </div>
                         </div>
                         <span className="justify-self-end text-ui-fg-base">
                           {option.price_type === "flat" ? (

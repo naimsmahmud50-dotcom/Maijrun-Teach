@@ -6,6 +6,11 @@ import { mapKeys } from "lodash"
 import React, { useEffect, useMemo, useState } from "react"
 import AddressSelect from "../address-select"
 import CountrySelect from "../country-select"
+import {
+  validateBDPhoneNumber,
+  BANGLADESH_DISTRICTS,
+  isInsideDhaka,
+} from "@lib/bangladesh"
 
 const ShippingAddress = ({
   customer,
@@ -25,8 +30,8 @@ const ShippingAddress = ({
     "shipping_address.company": cart?.shipping_address?.company || "",
     "shipping_address.postal_code": cart?.shipping_address?.postal_code || "",
     "shipping_address.city": cart?.shipping_address?.city || "",
-    "shipping_address.country_code": cart?.shipping_address?.country_code || "",
-    "shipping_address.province": cart?.shipping_address?.province || "",
+    "shipping_address.country_code": cart?.shipping_address?.country_code || "bd",
+    "shipping_address.province": cart?.shipping_address?.province || "Dhaka",
     "shipping_address.phone": cart?.shipping_address?.phone || "",
     email: cart?.email || "",
   })
@@ -58,8 +63,8 @@ const ShippingAddress = ({
         "shipping_address.company": address?.company || "",
         "shipping_address.postal_code": address?.postal_code || "",
         "shipping_address.city": address?.city || "",
-        "shipping_address.country_code": address?.country_code || "",
-        "shipping_address.province": address?.province || "",
+        "shipping_address.country_code": address?.country_code || "bd",
+        "shipping_address.province": address?.province || "Dhaka",
         "shipping_address.phone": address?.phone || "",
       }))
 
@@ -83,7 +88,7 @@ const ShippingAddress = ({
 
   const handleChange = (
     e: React.ChangeEvent<
-      HTMLInputElement | HTMLInputElement | HTMLSelectElement
+      HTMLInputElement | HTMLSelectElement
     >
   ) => {
     setFormData({
@@ -91,6 +96,17 @@ const ShippingAddress = ({
       [e.target.name]: e.target.value,
     })
   }
+
+  const phoneValue = formData["shipping_address.phone"] || ""
+  const phoneValidation = phoneValue.trim()
+    ? validateBDPhoneNumber(phoneValue)
+    : null
+
+  const selectedProvinceOrCity =
+    formData["shipping_address.province"] ||
+    formData["shipping_address.city"] ||
+    ""
+  const insideDhakaDelivery = isInsideDhaka(selectedProvinceOrCity)
 
   return (
     <>
@@ -110,6 +126,30 @@ const ShippingAddress = ({
           />
         </Container>
       )}
+
+      {/* Bangladesh Delivery Matrix Notification Banner */}
+      <div className="mb-6 p-4 rounded-lg border border-blue-100 bg-blue-50/70 dark:bg-blue-950/30 dark:border-blue-900 flex items-start gap-3">
+        <div className="text-blue-600 dark:text-blue-400 mt-0.5">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div className="text-xs text-blue-900 dark:text-blue-200">
+          <p className="font-semibold text-sm mb-0.5">MAIJRUN Tech Nationwide Delivery &amp; COD</p>
+          <p>
+            {insideDhakaDelivery ? (
+              <span className="font-medium text-emerald-700 dark:text-emerald-400">
+                ✓ Inside Dhaka Delivery selected: ৳80 flat rate (24–48 hours express delivery)
+              </span>
+            ) : (
+              <span className="font-medium text-blue-700 dark:text-blue-300">
+                ✓ Outside Dhaka Courier selected: ৳150 flat rate (2–4 days nationwide delivery)
+              </span>
+            )}
+          </p>
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 gap-4">
         <Input
           label="First name"
@@ -130,7 +170,7 @@ const ShippingAddress = ({
           data-testid="shipping-last-name-input"
         />
         <Input
-          label="Address"
+          label="Address (House, Road, Area)"
           name="shipping_address.address_1"
           autoComplete="address-line1"
           value={formData["shipping_address.address_1"]}
@@ -139,7 +179,7 @@ const ShippingAddress = ({
           data-testid="shipping-address-input"
         />
         <Input
-          label="Company"
+          label="Company / Landmark (Optional)"
           name="shipping_address.company"
           value={formData["shipping_address.company"]}
           onChange={handleChange}
@@ -156,7 +196,7 @@ const ShippingAddress = ({
           data-testid="shipping-postal-code-input"
         />
         <Input
-          label="City"
+          label="City / Thana"
           name="shipping_address.city"
           autoComplete="address-level2"
           value={formData["shipping_address.city"]}
@@ -173,15 +213,32 @@ const ShippingAddress = ({
           required
           data-testid="shipping-country-select"
         />
-        <Input
-          label="State / Province"
-          name="shipping_address.province"
-          autoComplete="address-level1"
-          value={formData["shipping_address.province"]}
-          onChange={handleChange}
-          data-testid="shipping-province-input"
-        />
+
+        {/* District Selector (64 Bangladesh Districts) */}
+        <div className="flex flex-col">
+          <label className="text-xs text-ui-fg-subtle mb-1 font-medium">
+            District (জেলা)
+          </label>
+          <div className="relative">
+            <select
+              name="shipping_address.province"
+              value={formData["shipping_address.province"]}
+              onChange={handleChange}
+              className="w-full min-h-[44px] px-4 py-2 bg-ui-bg-field border border-ui-border-base rounded-md text-sm text-ui-fg-base focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-ui-bg-field-hover transition-colors"
+              data-testid="shipping-province-input"
+              required
+            >
+              <option value="">Select District</option>
+              {BANGLADESH_DISTRICTS.map((d) => (
+                <option key={d.name} value={d.name}>
+                  {d.name} ({d.division} Division) {d.isInsideDhaka ? "— Inside Dhaka (৳80)" : "— Courier (৳150)"}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
       </div>
+
       <div className="my-8">
         <Checkbox
           label="Billing address same as shipping address"
@@ -191,6 +248,7 @@ const ShippingAddress = ({
           data-testid="billing-address-checkbox"
         />
       </div>
+
       <div className="grid grid-cols-2 gap-4 mb-4">
         <Input
           label="Email"
@@ -203,14 +261,32 @@ const ShippingAddress = ({
           required
           data-testid="shipping-email-input"
         />
-        <Input
-          label="Phone"
-          name="shipping_address.phone"
-          autoComplete="tel"
-          value={formData["shipping_address.phone"]}
-          onChange={handleChange}
-          data-testid="shipping-phone-input"
-        />
+
+        {/* Bangladesh Mobile Phone with Validation */}
+        <div className="flex flex-col">
+          <Input
+            label="Phone (01XXXXXXXXX)"
+            name="shipping_address.phone"
+            autoComplete="tel"
+            value={formData["shipping_address.phone"]}
+            onChange={handleChange}
+            required
+            data-testid="shipping-phone-input"
+          />
+          {phoneValidation && (
+            <div className="mt-1 text-xs">
+              {phoneValidation.isValid ? (
+                <span className="text-emerald-600 font-medium flex items-center gap-1">
+                  ✓ Valid {phoneValidation.operator} ({phoneValidation.formatted})
+                </span>
+              ) : (
+                <span className="text-red-500 font-medium">
+                  {phoneValidation.error}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </>
   )

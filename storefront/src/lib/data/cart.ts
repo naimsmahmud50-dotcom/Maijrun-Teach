@@ -15,6 +15,7 @@ import {
 } from "./cookies"
 import { getRegion } from "./regions"
 import { getLocale } from "@lib/data/locale-actions"
+import { validateBDPhoneNumber } from "@lib/bangladesh"
 
 /**
  * Retrieves a cart by its ID. If no ID is provided, it will use the cart ID from the cookies.
@@ -344,6 +345,16 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
       throw new Error("No existing cart found when setting addresses")
     }
 
+    const countryCode = String(formData.get("shipping_address.country_code") || "").toLowerCase()
+    const rawPhone = (formData.get("shipping_address.phone") as string | null) || ""
+
+    if (countryCode === "bd" || rawPhone.trim().length > 0) {
+      const phoneValidation = validateBDPhoneNumber(rawPhone)
+      if (!phoneValidation.isValid) {
+        throw new Error(phoneValidation.error || "Please enter a valid Bangladesh phone number.")
+      }
+    }
+
     const data = {
       shipping_address: {
         first_name: formData.get("shipping_address.first_name"),
@@ -355,7 +366,7 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
         city: formData.get("shipping_address.city"),
         country_code: formData.get("shipping_address.country_code"),
         province: formData.get("shipping_address.province"),
-        phone: formData.get("shipping_address.phone"),
+        phone: rawPhone ? validateBDPhoneNumber(rawPhone).normalized : "",
       },
       email: formData.get("email"),
     } as any

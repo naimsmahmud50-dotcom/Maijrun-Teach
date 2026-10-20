@@ -1,5 +1,5 @@
 import React from "react"
-import { CreditCard } from "@medusajs/icons"
+import { CreditCard, CashSolid } from "@medusajs/icons"
 
 import Ideal from "@modules/common/icons/ideal"
 import Bancontact from "@modules/common/icons/bancontact"
@@ -10,6 +10,14 @@ export const paymentInfoMap: Record<
   string,
   { title: string; icon: React.JSX.Element }
 > = {
+  pp_system_default: {
+    title: "Cash on Delivery (COD)",
+    icon: <CashSolid />,
+  },
+  system_default: {
+    title: "Cash on Delivery (COD)",
+    icon: <CashSolid />,
+  },
   pp_stripe_stripe: {
     title: "Credit card",
     icon: <CreditCard />,
@@ -30,10 +38,6 @@ export const paymentInfoMap: Record<
     title: "PayPal",
     icon: <PayPal />,
   },
-  pp_system_default: {
-    title: "Manual Payment",
-    icon: <CreditCard />,
-  },
   // Add more payment providers here
 }
 
@@ -48,7 +52,12 @@ export const isPaypal = (providerId?: string) => {
   return providerId?.startsWith("pp_paypal")
 }
 export const isManual = (providerId?: string) => {
-  return providerId?.startsWith("pp_system_default")
+  return (
+    providerId?.startsWith("pp_system_default") ||
+    providerId?.startsWith("system_default") ||
+    Boolean(providerId?.includes("manual")) ||
+    Boolean(providerId?.includes("cod"))
+  )
 }
 
 // Add currencies that don't need to be divided by 100

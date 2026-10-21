@@ -50,6 +50,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params
   try {
     const productCategory = await getCategoryByHandle(params.category)
+    if (!productCategory) {
+      return notFound()
+    }
 
     const title = productCategory.name + " | MAIJRUN Tech"
 

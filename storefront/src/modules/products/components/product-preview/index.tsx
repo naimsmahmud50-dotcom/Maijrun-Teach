@@ -5,6 +5,7 @@ import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { parseProductSpecs, getProductStockInfo } from "@lib/specs"
 import { WarrantyBadge, StockBadge } from "@modules/products/components/badges"
+import CompareButton from "@/modules/compare/components/compare-button"
 import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
 
@@ -42,12 +43,15 @@ export default async function ProductPreview({
           </div>
         </div>
 
-        {/* Tech Badges: Stock Status & Warranty */}
-        <div className="flex items-center gap-1.5 mt-2.5 flex-wrap">
-          <StockBadge stock={stock} size="sm" />
-          {specs?.warranty && (
-            <WarrantyBadge warranty={specs.warranty} size="sm" />
-          )}
+        {/* Tech Badges & Compare Button */}
+        <div className="flex items-center justify-between gap-1.5 mt-2.5 flex-wrap">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <StockBadge stock={stock} size="sm" />
+            {specs?.warranty && (
+              <WarrantyBadge warranty={specs.warranty} size="sm" />
+            )}
+          </div>
+          <CompareButton product={product} variant="pill" />
         </div>
       </div>
     </LocalizedClientLink>

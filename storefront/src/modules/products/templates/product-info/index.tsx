@@ -3,6 +3,7 @@ import { Heading, Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { parseProductSpecs, getProductStockInfo } from "@lib/specs"
 import { WarrantyBadge, StockBadge } from "@modules/products/components/badges"
+import CompareButton from "@/modules/compare/components/compare-button"
 
 type ProductInfoProps = {
   product: HttpTypes.StoreProduct
@@ -39,12 +40,13 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
           {product.title}
         </Heading>
 
-        {/* Badges Row: Stock and Warranty */}
+        {/* Badges Row: Stock, Warranty, and Compare */}
         <div className="flex flex-wrap items-center gap-2.5 pt-1 pb-1">
           <StockBadge stock={stock} size="md" />
           {specs?.warranty && (
             <WarrantyBadge warranty={specs.warranty} size="md" />
           )}
+          <CompareButton product={product} variant="pill" />
         </div>
 
         <Text

@@ -51,6 +51,13 @@ export default async function Nav() {
               </LocalizedClientLink>
               <LocalizedClientLink
                 className="hover:text-ui-fg-base"
+                href="/track"
+                data-testid="nav-track-link"
+              >
+                Track Order
+              </LocalizedClientLink>
+              <LocalizedClientLink
+                className="hover:text-ui-fg-base"
                 href="/account"
                 data-testid="nav-account-link"
               >

@@ -6,6 +6,7 @@ import { HttpTypes } from "@medusajs/types"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { getAuthHeaders, getCacheOptions } from "./cookies"
 import { getRegion, retrieveRegion } from "./regions"
+import { DEMO_PRODUCTS } from "@lib/demo-products"
 
 export const listProducts = async ({
   pageParam = 1,
@@ -80,6 +81,20 @@ export const listProducts = async ({
           count,
         },
         nextPage: nextPage,
+        queryParams,
+      }
+    })
+    .catch(() => {
+      let products = [...DEMO_PRODUCTS]
+      if (queryParams && "handle" in queryParams && queryParams.handle) {
+        products = products.filter((p) => p.handle === queryParams.handle)
+      }
+      return {
+        response: {
+          products,
+          count: products.length,
+        },
+        nextPage: null,
         queryParams,
       }
     })

@@ -1,0 +1,68 @@
+name: MAIJRUN Tech CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-verify:
+    name: 🧪 Security & Quality Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Check out repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: storefront/package-lock.json
+
+      - name: 📦 Install Storefront Dependencies
+        working-directory: storefront
+        run: npm ci --legacy-peer-deps
+
+      - name: 🛡️ Run Test Suite (Jest / ASVS L2 Baseline)
+        working-directory: storefront
+        run: npm test -- --coverage=false
+
+      - name: 🔍 TypeScript Strict Typecheck
+        working-directory: storefront
+        run: npx tsc --noEmit
+
+  deploy-production:
+    name: 🚀 Deploy to Production VPS
+    needs: test-and-verify
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Check out repository
+        uses: actions/checkout@v4
+
+      - name: 🔑 Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_VPS_HOST }}
+          username: ${{ secrets.PROD_VPS_USER }}
+          key: ${{ secrets.PROD_VPS_SSH_KEY }}
+          port: ${{ secrets.PROD_VPS_PORT || 2222 }}
+          script: |
+            set -e
+            echo "🚚 Updating MAIJRUN Tech production codebase..."
+            cd /opt/maijrun-store
+            git pull origin main
+
+            echo "🐳 Building and updating Docker containers..."
+            docker compose -f deploy/docker/docker-compose.production.yml build --pull
+            docker compose -f deploy/docker/docker-compose.production.yml up -d --remove-orphans
+
+            echo "🩺 Verifying container health..."
+            sleep 10
+            docker compose -f deploy/docker/docker-compose.production.yml ps
+
+            echo "🎉 Deployment successfully completed!"

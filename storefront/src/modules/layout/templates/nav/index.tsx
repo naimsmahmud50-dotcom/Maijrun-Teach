@@ -43,6 +43,13 @@ export default async function Nav() {
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
             <div className="hidden small:flex items-center gap-x-6 h-full">
               <LocalizedClientLink
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 font-semibold text-xs border border-sky-200 dark:border-sky-800/60 hover:bg-sky-100 transition"
+                href="/pc-builder"
+                data-testid="nav-pc-builder-link"
+              >
+                <span>⚙️</span> PC Builder
+              </LocalizedClientLink>
+              <LocalizedClientLink
                 className="hover:text-ui-fg-base"
                 href="/account"
                 data-testid="nav-account-link"

@@ -109,4 +109,33 @@
   .text-3xl-semi {
     @apply text-[32px] leading-[44px] font-semibold;
   }
+
+  /* Luxury Tech Design Utilities */
+  .glass-card {
+    @apply backdrop-blur-md bg-slate-900/80 border border-slate-800/80 hover:border-cyan-500/50 transition-all duration-300 shadow-xl rounded-xl;
+  }
+
+  .glass-panel {
+    @apply backdrop-blur-xl bg-slate-950/90 border border-slate-800/90 shadow-2xl rounded-2xl;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  }
+
+  .neon-glow-hover:hover {
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
+  }
+
+  .badge-tech {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-cyan-950/50 text-cyan-400 border border-cyan-800/50;
+  }
+
+  .badge-warranty {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-950/50 text-emerald-400 border border-emerald-800/50;
+  }
+
+  .badge-emi {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-950/50 text-amber-400 border border-amber-800/50;
+  }
 }

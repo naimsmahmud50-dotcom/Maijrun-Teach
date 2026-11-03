@@ -11,6 +11,12 @@ import {
   BANGLADESH_DISTRICTS,
   isInsideDhaka,
 } from "@lib/bangladesh"
+import {
+  BD_DISTRICTS_DATA,
+  getThanasByDistrict,
+  getShippingInfo,
+  getAllDistricts,
+} from "@lib/data/bd-geo"
 
 const ShippingAddress = ({
   customer,
@@ -195,15 +201,6 @@ const ShippingAddress = ({
           required
           data-testid="shipping-postal-code-input"
         />
-        <Input
-          label="City / Thana"
-          name="shipping_address.city"
-          autoComplete="address-level2"
-          value={formData["shipping_address.city"]}
-          onChange={handleChange}
-          required
-          data-testid="shipping-city-input"
-        />
         <CountrySelect
           name="shipping_address.country_code"
           autoComplete="country"
@@ -223,15 +220,50 @@ const ShippingAddress = ({
             <select
               name="shipping_address.province"
               value={formData["shipping_address.province"]}
-              onChange={handleChange}
-              className="w-full min-h-[44px] px-4 py-2 bg-ui-bg-field border border-ui-border-base rounded-md text-sm text-ui-fg-base focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-ui-bg-field-hover transition-colors"
+              onChange={(e) => {
+                const newDistrict = e.target.value
+                const thanas = getThanasByDistrict(newDistrict)
+                setFormData((prev: any) => ({
+                  ...prev,
+                  "shipping_address.province": newDistrict,
+                  "shipping_address.city": thanas[0] || "",
+                }))
+              }}
+              className="w-full min-h-[44px] px-4 py-2 bg-ui-bg-field border border-ui-border-base rounded-md text-sm text-ui-fg-base focus:outline-none focus:ring-2 focus:ring-cyan-500 hover:bg-ui-bg-field-hover transition-colors"
               data-testid="shipping-province-input"
               required
             >
               <option value="">Select District</option>
-              {BANGLADESH_DISTRICTS.map((d) => (
-                <option key={d.name} value={d.name}>
-                  {d.name} ({d.division} Division) {d.isInsideDhaka ? "— Inside Dhaka (৳80)" : "— Courier (৳150)"}
+              {BANGLADESH_DISTRICTS.map((d) => {
+                const info = getShippingInfo(d.name)
+                return (
+                  <option key={d.name} value={d.name}>
+                    {d.name} ({d.division}) — ৳{info.fee} ({info.timeframe})
+                  </option>
+                )
+              })}
+            </select>
+          </div>
+        </div>
+
+        {/* Hyperlocal Thana / Upazila Cascade */}
+        <div className="flex flex-col">
+          <label className="text-xs text-ui-fg-subtle mb-1 font-medium">
+            Thana / Upazila (থানা)
+          </label>
+          <div className="relative">
+            <select
+              name="shipping_address.city"
+              value={formData["shipping_address.city"]}
+              onChange={handleChange}
+              className="w-full min-h-[44px] px-4 py-2 bg-ui-bg-field border border-ui-border-base rounded-md text-sm text-ui-fg-base focus:outline-none focus:ring-2 focus:ring-cyan-500 hover:bg-ui-bg-field-hover transition-colors"
+              data-testid="shipping-city-input"
+              required
+            >
+              <option value="">Select Thana / Area</option>
+              {getThanasByDistrict(formData["shipping_address.province"] || "Dhaka").map((thana) => (
+                <option key={thana} value={thana}>
+                  {thana}
                 </option>
               ))}
             </select>

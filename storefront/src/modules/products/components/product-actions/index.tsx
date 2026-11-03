@@ -12,6 +12,10 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import ProductPrice from "../product-price"
 import MobileActions from "./mobile-actions"
 import { useRouter } from "next/navigation"
+import ColorSwatchSelector from "../color-swatch/ColorSwatchSelector"
+import WarrantyBadgeBox from "../warranty/WarrantyBadgeBox"
+import EmiCalculatorModal from "../emi/EmiCalculatorModal"
+import RequestOrderModal from "../request-order/RequestOrderModal"
 
 type ProductActionsProps = {
   product: HttpTypes.StoreProduct
@@ -135,26 +139,52 @@ export default function ProductActions({
     setIsAdding(false)
   }
 
+  const currentPrice =
+    selectedVariant?.calculated_price?.calculated_amount ||
+    product.variants?.[0]?.calculated_price?.calculated_amount ||
+    0
+
+  const specs = (product.metadata as any)?.specs || {}
+  const warrantyText = specs.warranty || "2 Years Official Brand Warranty"
+
+  const colorOption = product.options?.find(
+    (o) => o.title?.toLowerCase() === "color"
+  )
+  const colorValues = (colorOption?.values || []).map((val: any) => ({
+    name: typeof val === "string" ? val : val.value,
+  }))
+
   return (
     <>
       <div className="flex flex-col gap-y-2" ref={actionsRef}>
         <div>
+          {colorOption && colorValues.length > 0 && (
+            <ColorSwatchSelector
+              colors={colorValues}
+              selectedColor={options[colorOption.id] || colorValues[0]?.name}
+              onSelectColor={(colorName) => setOptionValue(colorOption.id, colorName)}
+              disabled={!!disabled || isAdding}
+            />
+          )}
+
           {(product.variants?.length ?? 0) > 1 && (
             <div className="flex flex-col gap-y-4">
-              {(product.options || []).map((option) => {
-                return (
-                  <div key={option.id}>
-                    <OptionSelect
-                      option={option}
-                      current={options[option.id]}
-                      updateOption={setOptionValue}
-                      title={option.title ?? ""}
-                      data-testid="product-options"
-                      disabled={!!disabled || isAdding}
-                    />
-                  </div>
-                )
-              })}
+              {(product.options || [])
+                .filter((option) => option.title?.toLowerCase() !== "color")
+                .map((option) => {
+                  return (
+                    <div key={option.id}>
+                      <OptionSelect
+                        option={option}
+                        current={options[option.id]}
+                        updateOption={setOptionValue}
+                        title={option.title ?? ""}
+                        data-testid="product-options"
+                        disabled={!!disabled || isAdding}
+                      />
+                    </div>
+                  )
+                })}
               <Divider />
             </div>
           )}
@@ -162,26 +192,40 @@ export default function ProductActions({
 
         <ProductPrice product={product} variant={selectedVariant} />
 
-        <Button
-          onClick={handleAddToCart}
-          disabled={
-            !inStock ||
-            !selectedVariant ||
-            !!disabled ||
-            isAdding ||
-            !isValidVariant
-          }
-          variant="primary"
-          className="w-full h-10"
-          isLoading={isAdding}
-          data-testid="add-product-button"
-        >
-          {!selectedVariant && !options
-            ? "Select variant"
-            : !inStock || !isValidVariant
-            ? "Out of stock"
-            : "Add to cart"}
-        </Button>
+        {currentPrice > 0 && <EmiCalculatorModal price={currentPrice} />}
+
+        <div className="flex flex-col gap-2 my-2">
+          <Button
+            onClick={handleAddToCart}
+            disabled={
+              !inStock ||
+              !selectedVariant ||
+              !!disabled ||
+              isAdding ||
+              !isValidVariant
+            }
+            variant="primary"
+            className="w-full h-11 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.2)] transition-all"
+            isLoading={isAdding}
+            data-testid="add-product-button"
+          >
+            {!selectedVariant && !options
+              ? "Select variant"
+              : !inStock || !isValidVariant
+              ? "Out of Stock"
+              : "Add to Cart"}
+          </Button>
+
+          {(!inStock || !isValidVariant) && (
+            <RequestOrderModal
+              productTitle={product.title}
+              thumbnail={product.thumbnail || product.images?.[0]?.url}
+            />
+          )}
+        </div>
+
+        <WarrantyBadgeBox warrantyText={warrantyText} />
+
         <MobileActions
           product={product}
           variant={selectedVariant}

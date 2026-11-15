@@ -2,20 +2,93 @@ import { HttpTypes } from "@medusajs/types"
 
 /**
  * Official MAIJRUN Tech Enterprise Catalog
- * Production hardware across Laptops, Desktops, Flagship Phones, Audio, Displays & Components.
- * Real BDT pricing, structured specs, color swatches, and high-res imagery.
+ * Production hardware across Laptops, Desktops, Flagship Phones, Audio, Displays & Extreme Hardware.
+ * Real BDT pricing, structured specs, color swatches, and high-res multi-angle studio imagery.
  */
 export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
-  // --- 1. LAPTOPS ---
+  // ==========================================
+  // --- 1. APPLE MACBOOKS & LAPTOPS ---
+  // ==========================================
+  {
+    id: "prod_macbook_pro_16_m4_max",
+    title: "Apple MacBook Pro 16\" (M4 Max Chip)",
+    handle: "apple-macbook-pro-16-m4-max",
+    description: "Extreme power for the most demanding pro workflows. Apple M4 Max chip with 16-core CPU, 40-core GPU, Liquid Retina XDR display with 1600 nits peak brightness, 64GB unified memory, and next-gen Thunderbolt 5 connectivity.",
+    thumbnail: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=85",
+    images: [
+      { id: "img_mbp16max_1", url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=85" },
+      { id: "img_mbp16max_2", url: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=1000&q=85" },
+      { id: "img_mbp16max_3", url: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1000&q=85" },
+      { id: "img_mbp16max_4", url: "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_laptops", name: "Laptops" } as any],
+    options: [
+      {
+        id: "opt_mbp16max_color",
+        title: "Color",
+        values: ["Space Black", "Silver"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Apple",
+        processor: "Apple M4 Max (16-Core CPU, 40-Core GPU, 16-Core Neural Engine)",
+        processorFamily: "Apple M-Series",
+        ram: "64GB Unified Memory (546GB/s memory bandwidth)",
+        storage: "1TB Ultra-Fast PCIe NVMe SSD",
+        gpu: "40-Core Hardware-Accelerated Ray Tracing GPU",
+        display: "16.2-inch Liquid Retina XDR (3456x2234) 120Hz ProMotion, 1600 nits peak",
+        battery: "100Wh Li-Po with 140W USB-C GaN Fast Charger",
+        os: "macOS Sequoia",
+        ports: "3x Thunderbolt 5, HDMI 2.1, SDXC slot, MagSafe 3, 3.5mm headphone jack",
+        weight: "2.16 kg",
+        warranty: "1 Year Official Apple International Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_mbp16max_black",
+        title: "Space Black",
+        sku: "APL-MBP16MX-SB",
+        inventory_quantity: 8,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_mbp16max_color", value: "Space Black" }],
+        calculated_price: {
+          calculated_amount: 465000,
+          original_amount: 485000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_mbp16max_silver",
+        title: "Silver",
+        sku: "APL-MBP16MX-SL",
+        inventory_quantity: 6,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_mbp16max_color", value: "Silver" }],
+        calculated_price: {
+          calculated_amount: 465000,
+          original_amount: 485000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
   {
     id: "prod_macbook_pro_16_m4",
     title: "Apple MacBook Pro 16\" (M4 Pro Chip)",
     handle: "apple-macbook-pro-16-m4-pro",
     description: "Built for groundbreaking workflows. Powered by the next-gen M4 Pro chip with 14-core CPU, 20-core GPU, Liquid Retina XDR display with 1600 nits peak brightness, and up to 24 hours of battery life.",
-    thumbnail: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=85",
     images: [
-      { id: "img_mbp16_1", url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80" },
-      { id: "img_mbp16_2", url: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&q=80" },
+      { id: "img_mbp16_1", url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=85" },
+      { id: "img_mbp16_2", url: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=1000&q=85" },
+      { id: "img_mbp16_3", url: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1000&q=85" },
     ],
     categories: [{ id: "cat_laptops", name: "Laptops" } as any],
     options: [
@@ -76,14 +149,152 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
   } as unknown as HttpTypes.StoreProduct,
 
   {
+    id: "prod_macbook_air_13_m3",
+    title: "Apple MacBook Air 13\" (M3 Chip)",
+    handle: "apple-macbook-air-13-m3",
+    description: "Lean. Mean. M3 machine. Ultraportable fanless aluminum design with up to 18 hours battery life, vibrant 13.6-inch Liquid Retina display, MagSafe 3, and support for dual external displays.",
+    thumbnail: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=85",
+    images: [
+      { id: "img_mba13_1", url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=85" },
+      { id: "img_mba13_2", url: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=1000&q=85" },
+      { id: "img_mba13_3", url: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_laptops", name: "Laptops" } as any],
+    options: [
+      {
+        id: "opt_mba13_color",
+        title: "Color",
+        values: ["Midnight", "Starlight", "Space Gray"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Apple",
+        processor: "Apple M3 (8-Core CPU with 4 performance and 4 efficiency cores)",
+        processorFamily: "Apple M-Series",
+        ram: "16GB Unified Memory",
+        storage: "512GB PCIe SSD",
+        gpu: "10-Core Integrated GPU with Hardware Ray Tracing",
+        display: "13.6-inch Liquid Retina Display (2560x1664) 500 nits, True Tone",
+        battery: "52.6Wh Li-Po (Up to 18 hours battery life)",
+        os: "macOS Sequoia",
+        ports: "2x Thunderbolt / USB 4, MagSafe 3, 3.5mm headphone jack",
+        weight: "1.24 kg",
+        warranty: "1 Year Official Apple Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_mba13_midnight",
+        title: "Midnight",
+        sku: "APL-MBA13-MN",
+        inventory_quantity: 14,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_mba13_color", value: "Midnight" }],
+        calculated_price: {
+          calculated_amount: 158000,
+          original_amount: 168000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_mba13_starlight",
+        title: "Starlight",
+        sku: "APL-MBA13-SL",
+        inventory_quantity: 10,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_mba13_color", value: "Starlight" }],
+        calculated_price: {
+          calculated_amount: 158000,
+          original_amount: 168000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
+  {
+    id: "prod_macbook_air_15_m3",
+    title: "Apple MacBook Air 15\" (M3 Chip)",
+    handle: "apple-macbook-air-15-m3",
+    description: "Impossibly thin. Incredibly fast. The 15-inch MacBook Air gives you more room for what you love with a spacious Liquid Retina display, powered by the blazing M3 chip.",
+    thumbnail: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1000&q=85",
+    images: [
+      { id: "img_mba15_1", url: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1000&q=85" },
+      { id: "img_mba15_2", url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_laptops", name: "Laptops" } as any],
+    options: [
+      {
+        id: "opt_mba15_color",
+        title: "Color",
+        values: ["Midnight", "Starlight", "Space Gray"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Apple",
+        processor: "Apple M3 (8-Core CPU with 4 performance and 4 efficiency cores)",
+        processorFamily: "Apple M-Series",
+        ram: "16GB Unified Memory",
+        storage: "512GB Fast PCIe SSD",
+        gpu: "10-Core Integrated GPU with Hardware Ray Tracing",
+        display: "15.3-inch Liquid Retina Display (2880x1864) 500 nits, P3 Wide Color",
+        battery: "66.5Wh Li-Po (Up to 18 hours battery life)",
+        os: "macOS Sequoia",
+        ports: "2x Thunderbolt / USB 4, MagSafe 3, 3.5mm headphone jack",
+        weight: "1.51 kg",
+        warranty: "1 Year Official Apple Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_mba15_midnight",
+        title: "Midnight",
+        sku: "APL-MBA15-MN",
+        inventory_quantity: 14,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_mba15_color", value: "Midnight" }],
+        calculated_price: {
+          calculated_amount: 185000,
+          original_amount: 195000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_mba15_starlight",
+        title: "Starlight",
+        sku: "APL-MBA15-SL",
+        inventory_quantity: 8,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_mba15_color", value: "Starlight" }],
+        calculated_price: {
+          calculated_amount: 185000,
+          original_amount: 195000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
+  {
     id: "prod_asus_zephyrus_g16",
     title: "Asus ROG Zephyrus G16 (2025)",
     handle: "asus-rog-zephyrus-g16",
     description: "The pinnacle of thin & light gaming engineering. CNC unibody aluminum chassis holding an Intel Core Ultra 9 185H processor, NVIDIA GeForce RTX 4080 12GB graphics, and ROG Nebula 2.5K 240Hz OLED panel.",
-    thumbnail: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=1000&q=85",
     images: [
-      { id: "img_g16_1", url: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&q=80" },
-      { id: "img_g16_2", url: "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=800&q=80" },
+      { id: "img_g16_1", url: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=1000&q=85" },
+      { id: "img_g16_2", url: "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=1000&q=85" },
+      { id: "img_g16_3", url: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=1000&q=85" },
     ],
     categories: [{ id: "cat_laptops", name: "Laptops" } as any],
     options: [
@@ -148,8 +359,11 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
     title: "Lenovo Legion Pro 5 AMD Ryzen 7",
     handle: "lenovo-legion-pro-5",
     description: "AI-tuned esports battle station. Features AMD Ryzen 7 7745HX octa-core processor, full-power NVIDIA GeForce RTX 4070 8GB GPU, and Legion ColdFront 5.0 thermal technology.",
-    thumbnail: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&q=80",
-    images: [{ id: "img_legion_1", url: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=1000&q=85",
+    images: [
+      { id: "img_legion_1", url: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=1000&q=85" },
+      { id: "img_legion_2", url: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_laptops", name: "Laptops" } as any],
     options: [
       {
@@ -194,77 +408,15 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
   } as unknown as HttpTypes.StoreProduct,
 
   {
-    id: "prod_macbook_air_15_m3",
-    title: "Apple MacBook Air 15\" (M3 Chip)",
-    handle: "apple-macbook-air-15-m3",
-    description: "Impossibly thin. Incredibly fast. The 15-inch MacBook Air gives you more room for what you love with a spacious Liquid Retina display, powered by the blazing M3 chip.",
-    thumbnail: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&q=80",
-    images: [{ id: "img_mba15_1", url: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&q=80" }],
-    categories: [{ id: "cat_laptops", name: "Laptops" } as any],
-    options: [
-      {
-        id: "opt_mba15_color",
-        title: "Color",
-        values: ["Midnight", "Starlight", "Space Gray"] as any,
-      },
-    ],
-    metadata: {
-      specs: {
-        brand: "Apple",
-        processor: "Apple M3 (8-Core CPU with 4 performance and 4 efficiency cores)",
-        processorFamily: "Apple M-Series",
-        ram: "16GB Unified Memory",
-        storage: "512GB Fast PCIe SSD",
-        gpu: "10-Core Integrated GPU with Hardware Ray Tracing",
-        display: "15.3-inch Liquid Retina Display (2880x1864) 500 nits, P3 Wide Color",
-        battery: "66.5Wh Li-Po (Up to 18 hours battery life)",
-        os: "macOS Sequoia",
-        ports: "2x Thunderbolt / USB 4, MagSafe 3, 3.5mm headphone jack",
-        weight: "1.51 kg",
-        warranty: "1 Year Official Apple Warranty",
-      },
-    },
-    variants: [
-      {
-        id: "variant_mba15_midnight",
-        title: "Midnight",
-        sku: "APL-MBA15-MN",
-        inventory_quantity: 14,
-        manage_inventory: true,
-        allow_backorder: false,
-        options: [{ option_id: "opt_mba15_color", value: "Midnight" }],
-        calculated_price: {
-          calculated_amount: 185000,
-          original_amount: 195000,
-          currency_code: "bdt",
-          price_list_type: "default",
-        },
-      },
-      {
-        id: "variant_mba15_starlight",
-        title: "Starlight",
-        sku: "APL-MBA15-SL",
-        inventory_quantity: 8,
-        manage_inventory: true,
-        allow_backorder: false,
-        options: [{ option_id: "opt_mba15_color", value: "Starlight" }],
-        calculated_price: {
-          calculated_amount: 185000,
-          original_amount: 195000,
-          currency_code: "bdt",
-          price_list_type: "default",
-        },
-      },
-    ] as any,
-  } as unknown as HttpTypes.StoreProduct,
-
-  {
     id: "prod_thinkpad_x1_carbon_g12",
     title: "Lenovo ThinkPad X1 Carbon Gen 12",
     handle: "lenovo-thinkpad-x1-carbon-gen12",
     description: "The gold standard for enterprise executive computing. Featherweight carbon-fiber chassis, Intel Core Ultra 7 processor with dedicated NPU, and legendary spill-resistant ThinkPad keyboard.",
-    thumbnail: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&q=80",
-    images: [{ id: "img_x1_1", url: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=1000&q=85",
+    images: [
+      { id: "img_x1_1", url: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=1000&q=85" },
+      { id: "img_x1_2", url: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_laptops", name: "Laptops" } as any],
     options: [
       {
@@ -308,14 +460,104 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
     ] as any,
   } as unknown as HttpTypes.StoreProduct,
 
-  // --- 2. FLAGSHIP SMARTPHONES & TABLETS ---
+  // ==========================================
+  // --- 2. FLAGSHIP SMARTPHONES ---
+  // ==========================================
+  {
+    id: "prod_iphone_16_pro",
+    title: "Apple iPhone 16 Pro (A18 Pro)",
+    handle: "apple-iphone-16-pro",
+    description: "Pro titanium excellence. Powered by the A18 Pro chip, 48MP Fusion camera with faster quad-pixel sensor, 5x Telephoto optical zoom, dedicated Camera Control button, and Grade 5 titanium enclosure.",
+    thumbnail: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=1000&q=85",
+    images: [
+      { id: "img_ip16p_1", url: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=1000&q=85" },
+      { id: "img_ip16p_2", url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1000&q=85" },
+      { id: "img_ip16p_3", url: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=1000&q=85" },
+      { id: "img_ip16p_4", url: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_phones", name: "Smartphones" } as any],
+    options: [
+      {
+        id: "opt_ip16p_color",
+        title: "Color",
+        values: ["Natural Titanium", "Black Titanium", "Desert Titanium"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Apple",
+        processor: "Apple A18 Pro (6-core CPU, 6-core GPU, 16-core Neural Engine)",
+        processorFamily: "Apple M-Series",
+        ram: "8GB High-Speed RAM",
+        storage: "256GB NVMe High-Speed Storage",
+        display: "6.3-inch Super Retina XDR OLED (2622x1206) 120Hz ProMotion, 2000 nits peak",
+        battery: "3582mAh with MagSafe 25W Fast Wireless Charging",
+        os: "iOS 18 with Apple Intelligence",
+        ports: "USB-C 3.2 Gen 2 (up to 10Gb/s)",
+        weight: "199 grams",
+        warranty: "1 Year Official Apple International Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_ip16p_natural",
+        title: "Natural Titanium",
+        sku: "APL-IP16P-NT",
+        inventory_quantity: 14,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_ip16p_color", value: "Natural Titanium" }],
+        calculated_price: {
+          calculated_amount: 172000,
+          original_amount: 185000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_ip16p_black",
+        title: "Black Titanium",
+        sku: "APL-IP16P-BT",
+        inventory_quantity: 12,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_ip16p_color", value: "Black Titanium" }],
+        calculated_price: {
+          calculated_amount: 172000,
+          original_amount: 185000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_ip16p_desert",
+        title: "Desert Titanium",
+        sku: "APL-IP16P-DT",
+        inventory_quantity: 10,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_ip16p_color", value: "Desert Titanium" }],
+        calculated_price: {
+          calculated_amount: 172000,
+          original_amount: 185000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
   {
     id: "prod_iphone_16_pro_max",
     title: "Apple iPhone 16 Pro Max",
     handle: "apple-iphone-16-pro-max",
     description: "The ultimate iPhone. Grade 5 titanium design, Camera Control button, 4K 120 fps Dolby Vision recording, and the industry-leading A18 Pro chip with Apple Intelligence.",
-    thumbnail: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80",
-    images: [{ id: "img_ip16_1", url: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=1000&q=85",
+    images: [
+      { id: "img_ip16_1", url: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=1000&q=85" },
+      { id: "img_ip16_2", url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1000&q=85" },
+      { id: "img_ip16_3", url: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_phones", name: "Smartphones" } as any],
     options: [
       {
@@ -328,6 +570,7 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
       specs: {
         brand: "Apple",
         processor: "Apple A18 Pro (6-core CPU, 6-core GPU, 16-core Neural Engine)",
+        processorFamily: "Apple M-Series",
         ram: "8GB RAM",
         storage: "256GB NVMe High-Speed Storage",
         display: "6.9-inch Super Retina XDR OLED (2868x1320) 120Hz ProMotion, 2000 nits peak",
@@ -377,20 +620,25 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
     title: "Samsung Galaxy S25 Ultra 5G",
     handle: "samsung-galaxy-s25-ultra",
     description: "Galaxy AI powerhouse. Snapdragon 8 Elite for Galaxy, built-in S Pen stylus, titanium frame, 200MP quad-telephoto camera system with 100x Space Zoom.",
-    thumbnail: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&q=80",
-    images: [{ id: "img_s25_1", url: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=1000&q=85",
+    images: [
+      { id: "img_s25_1", url: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=1000&q=85" },
+      { id: "img_s25_2", url: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=1000&q=85" },
+      { id: "img_s25_3", url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_phones", name: "Smartphones" } as any],
     options: [
       {
         id: "opt_s25_color",
         title: "Color",
-        values: ["Titanium Gray", "Titanium Black", "Titanium Blue"] as any,
+        values: ["Titanium Gray", "Titanium Black"] as any,
       },
     ],
     metadata: {
       specs: {
         brand: "Samsung",
         processor: "Qualcomm Snapdragon 8 Elite for Galaxy (3nm)",
+        processorFamily: "Other",
         ram: "12GB LPDDR5X",
         storage: "256GB UFS 4.0 Storage",
         display: "6.86-inch Dynamic AMOLED 2X (3120x1440) 120Hz LTPO, 2600 nits, Anti-Reflective Armor",
@@ -421,12 +669,287 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
   } as unknown as HttpTypes.StoreProduct,
 
   {
+    id: "prod_galaxy_z_fold_6",
+    title: "Samsung Galaxy Z Fold 6 (AI Foldable)",
+    handle: "samsung-galaxy-z-fold-6",
+    description: "Slimmer, lighter, and more durable than ever. Dual-screen productivity with Snapdragon 8 Gen 3 for Galaxy, Armor Aluminum frame, IP48 water resistance, and Galaxy AI multi-window mastery.",
+    thumbnail: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=1000&q=85",
+    images: [
+      { id: "img_zfold6_1", url: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=1000&q=85" },
+      { id: "img_zfold6_2", url: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=1000&q=85" },
+      { id: "img_zfold6_3", url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_phones", name: "Smartphones" } as any],
+    options: [
+      {
+        id: "opt_zfold6_color",
+        title: "Color",
+        values: ["Phantom Black", "Silver Shadow"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Samsung",
+        processor: "Qualcomm Snapdragon 8 Gen 3 for Galaxy (4nm)",
+        processorFamily: "Other",
+        ram: "12GB LPDDR5X",
+        storage: "512GB UFS 4.0 High-Speed Storage",
+        display: '7.6" Main QXGA+ Dynamic AMOLED 2X 120Hz + 6.3" Cover AMOLED 120Hz, 2600 nits',
+        battery: "4400mAh Dual-Cell Battery with 25W Fast Charge",
+        os: "Android 14 with One UI 6.1.1 (7 Years OS Updates)",
+        ports: "USB Type-C 3.2, S Pen Fold Edition support",
+        weight: "239 grams",
+        warranty: "1 Year Official Samsung Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_zfold6_black",
+        title: "Phantom Black",
+        sku: "SAM-ZFD6-BK",
+        inventory_quantity: 8,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_zfold6_color", value: "Phantom Black" }],
+        calculated_price: {
+          calculated_amount: 235000,
+          original_amount: 250000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_zfold6_silver",
+        title: "Silver Shadow",
+        sku: "SAM-ZFD6-SL",
+        inventory_quantity: 6,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_zfold6_color", value: "Silver Shadow" }],
+        calculated_price: {
+          calculated_amount: 235000,
+          original_amount: 250000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
+  {
+    id: "prod_pixel_9_pro_xl",
+    title: "Google Pixel 9 Pro XL (Google Tensor G4)",
+    handle: "google-pixel-9-pro-xl",
+    description: "The most powerful Pixel yet. Groundbreaking Google Tensor G4 with Titan M2 security, 16GB RAM for Gemini Nano AI, 6.8-inch Super Actua display with 3000 nits peak brightness, and pro triple camera array.",
+    thumbnail: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=1000&q=85",
+    images: [
+      { id: "img_px9_1", url: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=1000&q=85" },
+      { id: "img_px9_2", url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1000&q=85" },
+      { id: "img_px9_3", url: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_phones", name: "Smartphones" } as any],
+    options: [
+      {
+        id: "opt_px9_color",
+        title: "Color",
+        values: ["Obsidian", "Porcelain"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Google",
+        processor: "Google Tensor G4 with Titan M2 Security Co-processor",
+        processorFamily: "Other",
+        ram: "16GB LPDDR5X RAM",
+        storage: "256GB UFS 3.1 Fast Storage",
+        display: "6.8-inch Super Actua LTPO OLED (2992x1344) 1-120Hz, 3000 nits peak",
+        battery: "5060mAh with 37W Fast Wired & 23W Wireless Charging",
+        os: "Android 15 (7 Years Guaranteed OS Updates)",
+        ports: "USB-C 3.2 Gen 2, Dual SIM (nano+eSIM)",
+        weight: "221 grams",
+        warranty: "1 Year Official Google Global Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_px9_obsidian",
+        title: "Obsidian",
+        sku: "GOO-PX9P-OB",
+        inventory_quantity: 11,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_px9_color", value: "Obsidian" }],
+        calculated_price: {
+          calculated_amount: 155000,
+          original_amount: 165000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_px9_porcelain",
+        title: "Porcelain",
+        sku: "GOO-PX9P-PO",
+        inventory_quantity: 9,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_px9_color", value: "Porcelain" }],
+        calculated_price: {
+          calculated_amount: 155000,
+          original_amount: 165000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
+  {
+    id: "prod_oneplus_13",
+    title: "OnePlus 13 Flagship (Snapdragon 8 Elite)",
+    handle: "oneplus-13-flagship",
+    description: "Peak flagship performance. Armed with Qualcomm Snapdragon 8 Elite, ultra-bright 4500 nits 2K BOE X2 Oriental Display, 6000mAh Glacier Battery with 100W SuperVOOC, and 50MP Hasselblad Triple Camera.",
+    thumbnail: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=1000&q=85",
+    images: [
+      { id: "img_op13_1", url: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=1000&q=85" },
+      { id: "img_op13_2", url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1000&q=85" },
+      { id: "img_op13_3", url: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_phones", name: "Smartphones" } as any],
+    options: [
+      {
+        id: "opt_op13_color",
+        title: "Color",
+        values: ["Midnight Black", "Arctic Dawn"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "OnePlus",
+        processor: "Qualcomm Snapdragon 8 Elite (3nm, up to 4.32GHz Oryon CPU)",
+        processorFamily: "Other",
+        ram: "16GB LPDDR5X RAM",
+        storage: "512GB UFS 4.0 High-Speed Storage",
+        display: "6.82-inch 2K 120Hz BOE X2 AMOLED (3168x1440), 4500 nits peak, Dolby Vision",
+        battery: "6000mAh Silicon-Carbon Glacier Battery with 100W Wired & 50W AIRVOOC",
+        os: "OxygenOS 15 based on Android 15",
+        ports: "USB-C 3.2 Gen 1, Infrared Blaster, Alert Slider",
+        weight: "213 grams",
+        warranty: "1 Year Official Brand Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_op13_black",
+        title: "Midnight Black",
+        sku: "1PLS-13-BK",
+        inventory_quantity: 14,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_op13_color", value: "Midnight Black" }],
+        calculated_price: {
+          calculated_amount: 118000,
+          original_amount: 128000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_op13_white",
+        title: "Arctic Dawn",
+        sku: "1PLS-13-WH",
+        inventory_quantity: 9,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_op13_color", value: "Arctic Dawn" }],
+        calculated_price: {
+          calculated_amount: 118000,
+          original_amount: 128000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
+  {
+    id: "prod_xiaomi_15_ultra",
+    title: "Xiaomi 15 Ultra Leica Master Edition",
+    handle: "xiaomi-15-ultra",
+    description: "Professional mobile optical pinnacle. Quad 50MP camera system engineered with Leica Summilux glass, 1-inch Sony LYT-900 sensor, 200MP periscope telephoto, and Snapdragon 8 Elite powerhouse.",
+    thumbnail: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=1000&q=85",
+    images: [
+      { id: "img_xm15_1", url: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=1000&q=85" },
+      { id: "img_xm15_2", url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1000&q=85" },
+      { id: "img_xm15_3", url: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_phones", name: "Smartphones" } as any],
+    options: [
+      {
+        id: "opt_xm15_color",
+        title: "Color",
+        values: ["Titanium Black", "White Ceramic"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Xiaomi",
+        processor: "Qualcomm Snapdragon 8 Elite (3nm)",
+        processorFamily: "Other",
+        ram: "16GB LPDDR5X RAM",
+        storage: "512GB UFS 4.0 High-Speed Storage",
+        display: "6.73-inch 2K WQHD+ LTPO OLED 120Hz, 3200 nits, Ceramic Glass 2.0",
+        battery: "6000mAh Battery with 90W HyperCharge & 80W Wireless",
+        os: "Xiaomi HyperOS 2.0 based on Android 15",
+        ports: "USB 3.2 Gen 2, Dual Stereo Speakers, IR Blaster",
+        weight: "220 grams",
+        warranty: "1 Year Official Brand Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_xm15_black",
+        title: "Titanium Black",
+        sku: "XMI-15U-BK",
+        inventory_quantity: 10,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_xm15_color", value: "Titanium Black" }],
+        calculated_price: {
+          calculated_amount: 148000,
+          original_amount: 160000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_xm15_white",
+        title: "White Ceramic",
+        sku: "XMI-15U-WH",
+        inventory_quantity: 8,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_xm15_color", value: "White Ceramic" }],
+        calculated_price: {
+          calculated_amount: 148000,
+          original_amount: 160000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
+  {
     id: "prod_ipad_pro_13_m4",
     title: "Apple iPad Pro 13\" (M4 Chip OLED)",
     handle: "apple-ipad-pro-13-m4",
     description: "Thinpossible. The world's thinnest Apple product ever, featuring the revolutionary Ultra Retina XDR Tandem OLED display, Apple M4 chip, and support for Apple Pencil Pro.",
-    thumbnail: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80",
-    images: [{ id: "img_ipad_1", url: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=1000&q=85",
+    images: [
+      { id: "img_ipad_1", url: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=1000&q=85" },
+      { id: "img_ipad_2", url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_tablets", name: "Tablets" } as any],
     options: [
       {
@@ -439,6 +962,7 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
       specs: {
         brand: "Apple",
         processor: "Apple M4 (9-core CPU, 10-core GPU, 16-core NPU)",
+        processorFamily: "Apple M-Series",
         ram: "8GB Unified Memory",
         storage: "256GB PCIe Storage",
         display: "13-inch Ultra Retina XDR Tandem OLED (2752x2064) 120Hz ProMotion, 1000 nits full-screen",
@@ -468,14 +992,181 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
     ] as any,
   } as unknown as HttpTypes.StoreProduct,
 
-  // --- 3. CUSTOM DESKTOP SYSTEMS & PC BUILDS ---
+  // ==========================================
+  // --- 3. EXTREME BATTLESTATIONS & MAC WORKSTATIONS ---
+  // ==========================================
+  {
+    id: "prod_rtx_5090_godlike_rig",
+    title: "MAIJRUN Titan RTX 5090 OC Extreme Battlestation",
+    handle: "maijrun-titan-rtx-5090-extreme-battlestation",
+    description: "The ultimate apex of PC gaming supremacy. Custom engineered with the groundbreaking NVIDIA GeForce RTX 5090 32GB GDDR7, AMD Ryzen 9 9950X, 64GB DDR5 6400MHz RGB, 4TB PCIe Gen5 SSD, and dual 360mm custom liquid cooling loop.",
+    thumbnail: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=1000&q=85",
+    images: [
+      { id: "img_5090_1", url: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=1000&q=85" },
+      { id: "img_5090_2", url: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1000&q=85" },
+      { id: "img_5090_3", url: "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_desktops", name: "Desktops" } as any],
+    options: [
+      {
+        id: "opt_5090_color",
+        title: "Color",
+        values: ["Space Black"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "MAIJRUN",
+        processor: "AMD Ryzen 9 9950X (16 Cores, 32 Threads, up to 5.7GHz, AM5)",
+        processorFamily: "Ryzen 9",
+        ram: "64GB Corsair Dominator Titanium DDR5 6400MHz RGB",
+        storage: "4TB Crucial T700 PCIe Gen5 NVMe SSD (12,400 MB/s)",
+        gpu: "NVIDIA GeForce RTX 5090 32GB GDDR7 512-bit Blackwell",
+        display: "Quad 8K 60Hz / 4K 240Hz DisplayPort 2.1a & HDMI 2.1b",
+        battery: "Seasonic Prime TX-1300 1300W 80+ Titanium ATX 3.1 PSU",
+        os: "Windows 11 Pro Genuine Activated",
+        ports: "USB4 40Gbps, 10x USB-A 3.2, 10GbE Aquantia LAN, Wi-Fi 7 BE200",
+        weight: "18.5 kg",
+        warranty: "3 Years Comprehensive MAIJRUN Premium Onsite Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_5090_black",
+        title: "Space Black",
+        sku: "MJR-DSK-RTX5090",
+        inventory_quantity: 4,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_5090_color", value: "Space Black" }],
+        calculated_price: {
+          calculated_amount: 650000,
+          original_amount: 695000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
+  {
+    id: "prod_mac_studio_m2_ultra",
+    title: "Apple Mac Studio (M2 Ultra Extreme)",
+    handle: "apple-mac-studio-m2-ultra",
+    description: "Outrageous pro workstation performance. Packed with the monster Apple M2 Ultra chip, 24-core CPU, up to 76-core GPU, 800GB/s memory bandwidth, and silent dual-blower thermal system.",
+    thumbnail: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=1000&q=85",
+    images: [
+      { id: "img_studio_1", url: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=1000&q=85" },
+      { id: "img_studio_2", url: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=1000&q=85" },
+      { id: "img_studio_3", url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_desktops", name: "Desktops" } as any],
+    options: [
+      {
+        id: "opt_studio_color",
+        title: "Color",
+        values: ["Silver"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Apple",
+        processor: "Apple M2 Ultra (24-Core CPU, 60-Core GPU, 32-Core Neural Engine)",
+        processorFamily: "Apple M-Series",
+        ram: "64GB Unified Memory (800GB/s bandwidth)",
+        storage: "1TB Ultra-Fast PCIe NVMe SSD",
+        gpu: "60-Core Hardware GPU with ProRes Encode/Decode Engine",
+        display: "Simultaneous support for up to eight 4K displays or six 6K displays",
+        battery: "Internal 370W High Efficiency Power Supply",
+        os: "macOS Sequoia",
+        ports: "6x Thunderbolt 4, 2x USB-A, 10Gb Ethernet, SDXC card slot, HDMI 2.1",
+        weight: "3.6 kg",
+        warranty: "1 Year Official Apple International Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_studio_silver",
+        title: "Silver",
+        sku: "APL-STUDIO-M2U",
+        inventory_quantity: 5,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_studio_color", value: "Silver" }],
+        calculated_price: {
+          calculated_amount: 495000,
+          original_amount: 525000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
+  {
+    id: "prod_mac_mini_m4_pro",
+    title: "Apple Mac mini M4 Pro (2025 Compact Studio)",
+    handle: "apple-mac-mini-m4-pro",
+    description: "More mighty. Way more mini. The redesigned 5x5 inch Mac mini with M4 Pro chip delivers pro-tier desktop performance with Thunderbolt 5, hardware ray tracing, and front-facing ports.",
+    thumbnail: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=1000&q=85",
+    images: [
+      { id: "img_mini_1", url: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=1000&q=85" },
+      { id: "img_mini_2", url: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=1000&q=85" },
+      { id: "img_mini_3", url: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_desktops", name: "Desktops" } as any],
+    options: [
+      {
+        id: "opt_mini_color",
+        title: "Color",
+        values: ["Silver"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Apple",
+        processor: "Apple M4 Pro (12-Core CPU, 16-Core GPU)",
+        processorFamily: "Apple M-Series",
+        ram: "24GB Unified Memory (273GB/s bandwidth)",
+        storage: "512GB High-Speed NVMe SSD",
+        gpu: "16-Core Integrated GPU with Hardware Ray Tracing",
+        display: "Supports up to three 6K displays at 60Hz",
+        battery: "Internal 100-240V AC Power Supply (Energy Star)",
+        os: "macOS Sequoia",
+        ports: "3x Thunderbolt 5 (rear), 2x USB-C (front), HDMI 2.1, Gigabit Ethernet, 3.5mm audio",
+        weight: "0.73 kg",
+        warranty: "1 Year Official Apple International Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_mini_silver",
+        title: "Silver",
+        sku: "APL-MINI-M4P",
+        inventory_quantity: 11,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_mini_color", value: "Silver" }],
+        calculated_price: {
+          calculated_amount: 195000,
+          original_amount: 210000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
   {
     id: "prod_maijrun_horizon_creator",
     title: "MAIJRUN Horizon Creator Workstation Desktop",
     handle: "maijrun-horizon-creator-workstation",
     description: "Engineered in-house for extreme 3D animation, 8K video color grading, and heavy machine learning workloads. Custom liquid-cooled with Lian Li O11 Dynamic EVO chassis.",
-    thumbnail: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&q=80",
-    images: [{ id: "img_horizon_1", url: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=1000&q=85",
+    images: [
+      { id: "img_horizon_1", url: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=1000&q=85" },
+      { id: "img_horizon_2", url: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_desktops", name: "Desktops" } as any],
     options: [
       {
@@ -524,8 +1215,11 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
     title: "MAIJRUN Apex BattleStation Gaming PC",
     handle: "maijrun-apex-battlestation",
     description: "Uncompromised 4K ultra-high-refresh gaming. Intel Core i9-14900K matched with NVIDIA GeForce RTX 4080 Super 16GB, NZXT Kraken 360 RGB liquid cooling, and PCIe 5.0 motherboard.",
-    thumbnail: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=800&q=80",
-    images: [{ id: "img_apex_1", url: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1000&q=85",
+    images: [
+      { id: "img_apex_1", url: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1000&q=85" },
+      { id: "img_apex_2", url: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_desktops", name: "Desktops" } as any],
     options: [
       {
@@ -569,20 +1263,218 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
     ] as any,
   } as unknown as HttpTypes.StoreProduct,
 
-  // --- 4. HIGH-END AUDIO & PERIPHERALS ---
+  // ==========================================
+  // --- 4. WEARABLES & AUDIOPHILE SOUND ---
+  // ==========================================
+  {
+    id: "prod_apple_watch_ultra_2",
+    title: "Apple Watch Ultra 2 (Titanium GPS + Cellular)",
+    handle: "apple-watch-ultra-2-titanium",
+    description: "The most capable and rugged Apple Watch. 49mm aerospace-grade titanium case, precision dual-frequency GPS, up to 72 hours in Low Power Mode, and 3000-nit Always-On Retina display.",
+    thumbnail: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=1000&q=85",
+    images: [
+      { id: "img_awu2_1", url: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=1000&q=85" },
+      { id: "img_awu2_2", url: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1000&q=85" },
+      { id: "img_awu2_3", url: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_accessories", name: "Accessories" } as any],
+    options: [
+      {
+        id: "opt_awu2_color",
+        title: "Color",
+        values: ["Trail Loop", "Ocean Band"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Apple",
+        processor: "Apple S9 SiP with 64-bit dual-core processor & 4-core Neural Engine",
+        processorFamily: "Apple M-Series",
+        ram: "64GB Internal Storage",
+        display: "49mm Always-On Retina LTPO OLED (410x502) Sapphire crystal, 3000 nits peak",
+        battery: "564mAh Li-Ion (Up to 36 hours normal use, 72 hours Low Power Mode)",
+        os: "watchOS 11",
+        ports: "Magnetic Fast Charger to USB-C Cable, Dual Speakers, 3-mic array",
+        weight: "61.4 grams",
+        warranty: "1 Year Official Apple Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_awu2_trail",
+        title: "Trail Loop",
+        sku: "APL-AWU2-TRL",
+        inventory_quantity: 12,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_awu2_color", value: "Trail Loop" }],
+        calculated_price: {
+          calculated_amount: 115000,
+          original_amount: 125000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_awu2_ocean",
+        title: "Ocean Band",
+        sku: "APL-AWU2-OCN",
+        inventory_quantity: 9,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_awu2_color", value: "Ocean Band" }],
+        calculated_price: {
+          calculated_amount: 115000,
+          original_amount: 125000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
+  {
+    id: "prod_sony_wf1000xm5",
+    title: "Sony WF-1000XM5 True Wireless Earbuds",
+    handle: "sony-wf-1000xm5",
+    description: "Astonishing sound quality and the best noise canceling in a true wireless earbud. Equipped with dual proprietary processors, Dynamic Driver X, bone conduction sensors, and AI-powered clear calling.",
+    thumbnail: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=1000&q=85",
+    images: [
+      { id: "img_snywf_1", url: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=1000&q=85" },
+      { id: "img_snywf_2", url: "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?w=1000&q=85" },
+      { id: "img_snywf_3", url: "https://images.unsplash.com/photo-1545127398-14699f92334b?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_audio", name: "Audio" } as any],
+    options: [
+      {
+        id: "opt_snywf_color",
+        title: "Color",
+        values: ["Black", "Silver"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Sony",
+        processor: "Integrated Processor V2 & HD Noise Canceling Processor QN2e",
+        battery: "8 hours per charge (24 hours total with wireless Qi charging case)",
+        ports: "USB Type-C & Qi Wireless Charging",
+        weight: "5.9 grams per earbud",
+        warranty: "1 Year Official Sony Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_snywf_black",
+        title: "Black",
+        sku: "SNY-WF5-BK",
+        inventory_quantity: 18,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_snywf_color", value: "Black" }],
+        calculated_price: {
+          calculated_amount: 34500,
+          original_amount: 38000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_snywf_silver",
+        title: "Silver",
+        sku: "SNY-WF5-SL",
+        inventory_quantity: 12,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_snywf_color", value: "Silver" }],
+        calculated_price: {
+          calculated_amount: 34500,
+          original_amount: 38000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
+  {
+    id: "prod_bose_qc_ultra",
+    title: "Bose QuietComfort Ultra Wireless Headphones",
+    handle: "bose-quietcomfort-ultra",
+    description: "World-class noise cancellation that is quieter than ever before. Revolutionary Bose Immersive Audio spatial sound, custom acoustic architecture, and ultra-plush luxury ear cushions.",
+    thumbnail: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1000&q=85",
+    images: [
+      { id: "img_bose_1", url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1000&q=85" },
+      { id: "img_bose_2", url: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=1000&q=85" },
+      { id: "img_bose_3", url: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_audio", name: "Audio" } as any],
+    options: [
+      {
+        id: "opt_bose_color",
+        title: "Color",
+        values: ["Black", "White Smoke"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Bose",
+        processor: "Proprietary Bose DSP with ActiveSense Noise Cancelling",
+        battery: "Up to 24 hours playback (15 min charge = 2.5 hours)",
+        ports: "USB-C charging & audio, 2.5mm to 3.5mm audio jack",
+        weight: "250 grams",
+        warranty: "1 Year Official Bose Global Warranty",
+      },
+    },
+    variants: [
+      {
+        id: "variant_bose_black",
+        title: "Black",
+        sku: "BSE-QCU-BK",
+        inventory_quantity: 15,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_bose_color", value: "Black" }],
+        calculated_price: {
+          calculated_amount: 48000,
+          original_amount: 52000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+      {
+        id: "variant_bose_white",
+        title: "White Smoke",
+        sku: "BSE-QCU-WH",
+        inventory_quantity: 10,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_bose_color", value: "White Smoke" }],
+        calculated_price: {
+          calculated_amount: 48000,
+          original_amount: 52000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
   {
     id: "prod_sony_wh1000xm5",
     title: "Sony WH-1000XM5 Wireless Noise-Canceling Headphones",
     handle: "sony-wh-1000xm5",
     description: "Industry-leading noise cancelation optimized automatically by two processors and eight microphones. Magnificent sound engineered with the new Integrated Processor V1 and LDAC high-resolution audio.",
-    thumbnail: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
-    images: [{ id: "img_sony_1", url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1000&q=85",
+    images: [
+      { id: "img_sony_1", url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1000&q=85" },
+      { id: "img_sony_2", url: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_audio", name: "Audio" } as any],
     options: [
       {
         id: "opt_sony_color",
         title: "Color",
-        values: ["Black", "Silver", "Midnight Blue"] as any,
+        values: ["Black", "Silver"] as any,
       },
     ],
     metadata: {
@@ -619,8 +1511,11 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
     title: "Apple AirPods Max (USB-C)",
     handle: "apple-airpods-max-usbc",
     description: "High-fidelity audio with active noise cancellation and transparency mode. Custom acoustic design with Apple-designed H1 chips in each ear cup and computational audio.",
-    thumbnail: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&q=80",
-    images: [{ id: "img_apm_1", url: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1000&q=85",
+    images: [
+      { id: "img_apm_1", url: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1000&q=85" },
+      { id: "img_apm_2", url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_audio", name: "Audio" } as any],
     options: [
       {
@@ -633,6 +1528,7 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
       specs: {
         brand: "Apple",
         processor: "Apple H1 headphone chip (each ear cup)",
+        processorFamily: "Apple M-Series",
         battery: "Up to 20 hours with Active Noise Cancellation enabled",
         ports: "USB-C port for charging and lossless wired audio",
         weight: "384.8 grams",
@@ -663,8 +1559,11 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
     title: "Keychron Q1 Pro Wireless Custom Mechanical Keyboard",
     handle: "keychron-q1-pro-mechanical-keyboard",
     description: "Full CNC machined aluminum body, 75% compact layout, hot-swappable Keychron K Pro Banana/Red switches, double-gasket design, and QMK/VIA programmable firmware.",
-    thumbnail: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80",
-    images: [{ id: "img_q1_1", url: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=1000&q=85",
+    images: [
+      { id: "img_q1_1", url: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=1000&q=85" },
+      { id: "img_q1_2", url: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_accessories", name: "Accessories" } as any],
     options: [
       {
@@ -701,14 +1600,65 @@ export const DEMO_PRODUCTS: HttpTypes.StoreProduct[] = [
     ] as any,
   } as unknown as HttpTypes.StoreProduct,
 
-  // --- 5. MONITORS & DISPLAYS ---
+  // ==========================================
+  // --- 5. ULTRA-GAMING MONITORS & QD-OLED ---
+  // ==========================================
+  {
+    id: "prod_asus_rog_swift_oled_4k",
+    title: "ASUS ROG Swift OLED PG32UCDM 32\" 4K 240Hz Gaming Monitor",
+    handle: "asus-rog-swift-oled-pg32ucdm",
+    description: "The undisputed king of 4K gaming monitors. 32-inch 4K QD-OLED panel with blazing 240Hz refresh rate, 0.03ms response time, custom graphene heatsink, 99% DCI-P3 color gamut, and 90W USB-C Power Delivery.",
+    thumbnail: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=1000&q=85",
+    images: [
+      { id: "img_pg32_1", url: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=1000&q=85" },
+      { id: "img_pg32_2", url: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=1000&q=85" },
+      { id: "img_pg32_3", url: "https://images.unsplash.com/photo-1551645120-d70bfe84c826?w=1000&q=85" },
+    ],
+    categories: [{ id: "cat_components", name: "Components" } as any],
+    options: [
+      {
+        id: "opt_pg32_color",
+        title: "Color",
+        values: ["Matte Black"] as any,
+      },
+    ],
+    metadata: {
+      specs: {
+        brand: "Asus",
+        display: '31.5" 4K QD-OLED (3840x2160) 240Hz 0.03ms, DisplayHDR True Black 400, G-SYNC compatible',
+        ports: "2x HDMI 2.1, 1x DisplayPort 1.4 (DSC), 1x USB-C (90W PD), 3x USB 3.2 Hub, SPDIF out",
+        warranty: "3 Years Official ASUS Warranty (includes OLED Burn-in Coverage)",
+      },
+    },
+    variants: [
+      {
+        id: "variant_pg32_black",
+        title: "Matte Black",
+        sku: "ASUS-PG32UCDM",
+        inventory_quantity: 8,
+        manage_inventory: true,
+        allow_backorder: false,
+        options: [{ option_id: "opt_pg32_color", value: "Matte Black" }],
+        calculated_price: {
+          calculated_amount: 185000,
+          original_amount: 198000,
+          currency_code: "bdt",
+          price_list_type: "default",
+        },
+      },
+    ] as any,
+  } as unknown as HttpTypes.StoreProduct,
+
   {
     id: "prod_lg_ultragear_32_oled",
     title: "LG UltraGear 32\" 4K Dual-Hz OLED Gaming Monitor",
     handle: "lg-ultragear-32-oled-4k",
     description: "The world's first VESA certified Dual-Hz gaming display: toggle between 4K UHD 240Hz for cinematic visuals or FHD 480Hz for ultra-fast competitive esports, featuring 0.03ms GtG response time.",
-    thumbnail: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80",
-    images: [{ id: "img_lg_1", url: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80" }],
+    thumbnail: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=1000&q=85",
+    images: [
+      { id: "img_lg_1", url: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=1000&q=85" },
+      { id: "img_lg_2", url: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=1000&q=85" },
+    ],
     categories: [{ id: "cat_components", name: "Components" } as any],
     options: [
       {

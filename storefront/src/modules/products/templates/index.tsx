@@ -11,6 +11,7 @@ import { notFound } from "next/navigation"
 import { HttpTypes } from "@medusajs/types"
 
 import TechnicalSpecs from "@modules/products/components/technical-specs"
+import InTheBox from "@modules/products/components/in-the-box/InTheBox"
 import ProductActionsWrapper from "./product-actions-wrapper"
 
 type ProductTemplateProps = {
@@ -59,7 +60,11 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         </div>
       </div>
 
-      <div className="content-container my-6">
+      <div className="content-container my-8 space-y-8">
+        <InTheBox
+          productTitle={product.title}
+          categoryName={product.categories?.[0]?.name}
+        />
         <TechnicalSpecs metadata={product.metadata} />
       </div>
 

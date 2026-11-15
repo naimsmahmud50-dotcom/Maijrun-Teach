@@ -6,11 +6,10 @@ import { Calculator, X, CreditCard, CheckCircle2 } from "lucide-react"
 const EMI_TENURES = [
   { months: 3, interest: 0, label: "3 Months (0% Interest)" },
   { months: 6, interest: 0, label: "6 Months (0% Interest)" },
-  { months: 9, interest: 4.5, label: "9 Months" },
-  { months: 12, interest: 6.0, label: "12 Months" },
-  { months: 18, interest: 8.5, label: "18 Months" },
-  { months: 24, interest: 10.5, label: "24 Months" },
-  { months: 36, interest: 14.0, label: "36 Months" },
+  { months: 12, interest: 0, label: "12 Months (0% Interest)" },
+  { months: 18, interest: 0, label: "18 Months (0% Interest)" },
+  { months: 24, interest: 0, label: "24 Months (0% Interest)" },
+  { months: 36, interest: 4.5, label: "36 Months" },
 ]
 
 const PARTNER_BANKS = [
@@ -26,15 +25,15 @@ const PARTNER_BANKS = [
 
 export default function EmiCalculatorModal({ price = 0 }: { price: number }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedMonths, setSelectedMonths] = useState(6)
+  const [selectedMonths, setSelectedMonths] = useState(12)
 
   if (!price || price < 10000) return null
 
-  // Calculate lowest EMI for 36 months as teaser
-  const minMonthly = Math.round(price / 36)
+  // Calculate monthly EMI for 24 months as teaser
+  const minMonthly = Math.round(price / 24)
 
   const activeTenure =
-    EMI_TENURES.find((t) => t.months === selectedMonths) || EMI_TENURES[1]
+    EMI_TENURES.find((t) => t.months === selectedMonths) || EMI_TENURES[2]
   const totalAmount = Math.round(price * (1 + activeTenure.interest / 100))
   const monthlyPayment = Math.round(totalAmount / activeTenure.months)
 
@@ -44,23 +43,26 @@ export default function EmiCalculatorModal({ price = 0 }: { price: number }) {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="w-full flex items-center justify-between p-3 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-850 hover:border-cyan-500/40 text-left transition-all my-2 group"
+        className="w-full flex items-center justify-between p-3 rounded-xl border border-slate-800 bg-slate-900/60 backdrop-blur-md hover:bg-slate-800/80 hover:border-cyan-500/50 text-left transition-all my-2 group shadow-lg"
       >
         <div className="flex items-center gap-2.5">
-          <div className="p-1.5 rounded-lg bg-cyan-950/60 text-cyan-400 border border-cyan-800/60 group-hover:scale-105 transition-transform">
+          <div className="p-1.5 rounded-lg bg-cyan-950/80 text-cyan-400 border border-cyan-800/70 group-hover:scale-105 transition-transform shadow-[0_0_8px_rgba(6,182,212,0.2)]">
             <CreditCard className="w-4 h-4" />
           </div>
           <div>
-            <div className="text-xs font-semibold text-slate-200">
-              Bank EMI Available from ৳{minMonthly.toLocaleString("en-BD")}/mo
+            <div className="text-xs font-bold text-slate-100 flex items-center gap-1.5">
+              <span>0% EMI Available from ৳{minMonthly.toLocaleString("en-BD")}/mo</span>
+              <span className="text-[9px] uppercase px-1.5 py-0.2 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 font-extrabold">
+                0% Interest
+              </span>
             </div>
             <div className="text-[11px] text-cyan-400 font-medium">
-              Up to 36 months • 0% EMI available on select cards
+              Up to 24 Months 0% Interest • 18+ Bangladesh Partner Banks
             </div>
           </div>
         </div>
-        <span className="text-xs text-slate-400 group-hover:text-cyan-300 font-medium underline underline-offset-2">
-          Plans
+        <span className="text-xs text-cyan-400 group-hover:text-cyan-300 font-semibold underline underline-offset-2">
+          Calculate
         </span>
       </button>
 

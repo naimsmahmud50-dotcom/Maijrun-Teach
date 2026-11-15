@@ -83,3 +83,47 @@ export function StockBadge({
     </span>
   )
 }
+
+export function FlagshipBadge({
+  tier = "FLAGSHIP TIER",
+  size = "sm",
+  className = "",
+}: {
+  tier?: string
+  size?: "sm" | "md"
+  className?: string
+}) {
+  const isSmall = size === "sm"
+  return (
+    <span
+      className={`inline-flex items-center gap-1 font-extrabold uppercase tracking-widest rounded-full border border-cyan-400/40 bg-cyan-950/90 text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.25)] ${
+        isSmall ? "px-2 py-0.5 text-[10px]" : "px-3 py-1 text-xs"
+      } ${className}`}
+      data-testid="flagship-badge"
+    >
+      <span className="text-cyan-400">⚡</span>
+      <span>{tier}</span>
+    </span>
+  )
+}
+
+export function OfficialGlobalBadge({
+  size = "sm",
+  className = "",
+}: {
+  size?: "sm" | "md"
+  className?: string
+}) {
+  const isSmall = size === "sm"
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 font-bold uppercase tracking-wider rounded-full border border-emerald-500/40 bg-emerald-950/80 text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.25)] ${
+        isSmall ? "px-2 py-0.5 text-[10px]" : "px-2.5 py-1 text-xs"
+      } ${className}`}
+      data-testid="official-global-badge"
+    >
+      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+      <span>OFFICIAL GLOBAL</span>
+    </span>
+  )
+}

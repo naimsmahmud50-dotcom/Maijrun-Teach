@@ -425,7 +425,15 @@ export default async function seedDemoData({ container }: ExecArgs) {
     categoryMap[c.name] = c.id;
   }
 
-  const categoryNames = ["Laptops", "Desktops", "Components", "Accessories"];
+  const categoryNames = [
+    "Laptops",
+    "Desktops",
+    "Components",
+    "Accessories",
+    "Smartphones",
+    "Audio",
+    "Tablets",
+  ];
   const categoriesToCreate = categoryNames.filter((name) => !categoryMap[name]);
 
   if (categoriesToCreate.length > 0) {
@@ -717,6 +725,261 @@ export default async function seedDemoData({ container }: ExecArgs) {
           prices: [
             { amount: 450000, currency_code: "bdt" },
             { amount: 3999, currency_code: "usd" },
+          ],
+        },
+      ],
+      sales_channels: [{ id: defaultSalesChannel[0].id }],
+    },
+    {
+      title: "Apple MacBook Pro 16\" (M4 Max Chip)",
+      handle: "apple-macbook-pro-16-m4-max",
+      category_ids: [categoryMap["Laptops"]],
+      description:
+        "[Demo] Extreme power for demanding pro workflows. Apple M4 Max chip with 16-core CPU, 40-core GPU, Liquid Retina XDR display, 64GB unified memory, and Thunderbolt 5.",
+      weight: 2160,
+      status: ProductStatus.PUBLISHED,
+      shipping_profile_id: shippingProfile.id,
+      metadata: {
+        specs: {
+          brand: "Apple",
+          processor: "Apple M4 Max (16-Core CPU, 40-Core GPU)",
+          processorFamily: "Apple M-Series",
+          ram: "64GB Unified Memory",
+          storage: "1TB Ultra-Fast PCIe NVMe SSD",
+          gpu: "40-Core Hardware Ray Tracing GPU",
+          display: "16.2-inch Liquid Retina XDR (3456x2234) 120Hz ProMotion",
+          battery: "100Wh with 140W USB-C GaN Fast Charger",
+          os: "macOS Sequoia",
+          ports: "3x Thunderbolt 5, HDMI 2.1, SDXC slot, MagSafe 3",
+          weight: "2.16 kg",
+          warranty: "1 Year Official Apple International Warranty",
+          isDemo: true,
+        },
+      },
+      images: [
+        {
+          url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1000&q=85",
+        },
+      ],
+      options: [{ title: "Color", values: ["Space Black", "Silver"] }],
+      variants: [
+        {
+          title: "Space Black / 64GB / 1TB",
+          sku: "APL-MBP16MX-SB",
+          options: { Color: "Space Black" },
+          prices: [
+            { amount: 465000, currency_code: "bdt" },
+            { amount: 4200, currency_code: "usd" },
+          ],
+        },
+      ],
+      sales_channels: [{ id: defaultSalesChannel[0].id }],
+    },
+    {
+      title: "Apple iPhone 16 Pro (A18 Pro)",
+      handle: "apple-iphone-16-pro",
+      category_ids: [categoryMap["Smartphones"]],
+      description:
+        "[Demo] Grade 5 titanium design, Camera Control button, 48MP Fusion camera, 5x Telephoto zoom, and A18 Pro chip with Apple Intelligence.",
+      weight: 199,
+      status: ProductStatus.PUBLISHED,
+      shipping_profile_id: shippingProfile.id,
+      metadata: {
+        specs: {
+          brand: "Apple",
+          processor: "Apple A18 Pro (6-core CPU, 6-core GPU, 16-core NPU)",
+          ram: "8GB RAM",
+          storage: "256GB NVMe Storage",
+          display: "6.3-inch Super Retina XDR OLED (2622x1206) 120Hz ProMotion",
+          battery: "3582mAh with MagSafe 25W Fast Wireless Charging",
+          os: "iOS 18 with Apple Intelligence",
+          ports: "USB-C 3.2 Gen 2 (up to 10Gb/s)",
+          weight: "199 grams",
+          warranty: "1 Year Official Apple International Warranty",
+          isDemo: true,
+        },
+      },
+      images: [
+        {
+          url: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=1000&q=85",
+        },
+      ],
+      options: [{ title: "Color", values: ["Natural Titanium", "Black Titanium"] }],
+      variants: [
+        {
+          title: "Natural Titanium / 256GB",
+          sku: "APL-IP16P-NT",
+          options: { Color: "Natural Titanium" },
+          prices: [
+            { amount: 172000, currency_code: "bdt" },
+            { amount: 1550, currency_code: "usd" },
+          ],
+        },
+      ],
+      sales_channels: [{ id: defaultSalesChannel[0].id }],
+    },
+    {
+      title: "Google Pixel 9 Pro XL (Google Tensor G4)",
+      handle: "google-pixel-9-pro-xl",
+      category_ids: [categoryMap["Smartphones"]],
+      description:
+        "[Demo] The most powerful Pixel yet with Google Tensor G4, Titan M2 security, 16GB RAM for Gemini Nano AI, and Super Actua 3000 nits OLED display.",
+      weight: 221,
+      status: ProductStatus.PUBLISHED,
+      shipping_profile_id: shippingProfile.id,
+      metadata: {
+        specs: {
+          brand: "Google",
+          processor: "Google Tensor G4 with Titan M2",
+          ram: "16GB LPDDR5X RAM",
+          storage: "256GB UFS 3.1 Fast Storage",
+          display: "6.8-inch Super Actua LTPO OLED (2992x1344) 1-120Hz, 3000 nits peak",
+          battery: "5060mAh with 37W Fast Wired Charging",
+          os: "Android 15 (7 Years OS Updates)",
+          ports: "USB-C 3.2 Gen 2, Dual SIM",
+          weight: "221 grams",
+          warranty: "1 Year Official Google Global Warranty",
+          isDemo: true,
+        },
+      },
+      images: [
+        {
+          url: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=1000&q=85",
+        },
+      ],
+      options: [{ title: "Color", values: ["Obsidian", "Porcelain"] }],
+      variants: [
+        {
+          title: "Obsidian / 256GB",
+          sku: "GOO-PX9P-OB",
+          options: { Color: "Obsidian" },
+          prices: [
+            { amount: 155000, currency_code: "bdt" },
+            { amount: 1390, currency_code: "usd" },
+          ],
+        },
+      ],
+      sales_channels: [{ id: defaultSalesChannel[0].id }],
+    },
+    {
+      title: "Samsung Galaxy Z Fold 6 (AI Foldable)",
+      handle: "samsung-galaxy-z-fold-6",
+      category_ids: [categoryMap["Smartphones"]],
+      description:
+        "[Demo] Dual-screen productivity with Snapdragon 8 Gen 3 for Galaxy, Armor Aluminum frame, IP48 water resistance, and Galaxy AI multi-window mastery.",
+      weight: 239,
+      status: ProductStatus.PUBLISHED,
+      shipping_profile_id: shippingProfile.id,
+      metadata: {
+        specs: {
+          brand: "Samsung",
+          processor: "Qualcomm Snapdragon 8 Gen 3 for Galaxy (4nm)",
+          ram: "12GB LPDDR5X",
+          storage: "512GB UFS 4.0 Storage",
+          display: "7.6\" Main QXGA+ Dynamic AMOLED 2X 120Hz + 6.3\" Cover AMOLED 120Hz",
+          battery: "4400mAh Dual-Cell with 25W Fast Charge",
+          os: "Android 14 with One UI 6.1.1",
+          ports: "USB Type-C 3.2, S Pen support",
+          weight: "239 grams",
+          warranty: "1 Year Official Samsung Warranty",
+          isDemo: true,
+        },
+      },
+      images: [
+        {
+          url: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=1000&q=85",
+        },
+      ],
+      options: [{ title: "Color", values: ["Phantom Black", "Silver Shadow"] }],
+      variants: [
+        {
+          title: "Phantom Black / 512GB",
+          sku: "SAM-ZFD6-BK",
+          options: { Color: "Phantom Black" },
+          prices: [
+            { amount: 235000, currency_code: "bdt" },
+            { amount: 2099, currency_code: "usd" },
+          ],
+        },
+      ],
+      sales_channels: [{ id: defaultSalesChannel[0].id }],
+    },
+    {
+      title: "MAIJRUN Titan RTX 5090 OC Extreme Battlestation",
+      handle: "maijrun-titan-rtx-5090-extreme-battlestation",
+      category_ids: [categoryMap["Desktops"]],
+      description:
+        "[Demo] The ultimate apex of PC gaming supremacy. Custom engineered with NVIDIA GeForce RTX 5090 32GB GDDR7, AMD Ryzen 9 9950X, 64GB DDR5 6400MHz RGB, and dual 360mm liquid cooling loop.",
+      weight: 18500,
+      status: ProductStatus.PUBLISHED,
+      shipping_profile_id: shippingProfile.id,
+      metadata: {
+        specs: {
+          brand: "MAIJRUN",
+          processor: "AMD Ryzen 9 9950X (16 Cores, 32 Threads, up to 5.7GHz)",
+          processorFamily: "Ryzen 9",
+          ram: "64GB Corsair Dominator Titanium DDR5 6400MHz RGB",
+          storage: "4TB Crucial T700 PCIe Gen5 NVMe SSD (12,400 MB/s)",
+          gpu: "NVIDIA GeForce RTX 5090 32GB GDDR7 512-bit Blackwell",
+          battery: "Seasonic Prime TX-1300 1300W 80+ Titanium ATX 3.1 PSU",
+          os: "Windows 11 Pro Genuine Activated",
+          ports: "USB4 40Gbps, 10x USB-A 3.2, 10GbE Aquantia LAN, Wi-Fi 7",
+          weight: "18.5 kg",
+          warranty: "3 Years Comprehensive MAIJRUN Premium Onsite Warranty",
+          isDemo: true,
+        },
+      },
+      images: [
+        {
+          url: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=1000&q=85",
+        },
+      ],
+      options: [{ title: "Color", values: ["Space Black"] }],
+      variants: [
+        {
+          title: "Space Black / 64GB / 4TB",
+          sku: "MJR-DSK-RTX5090",
+          options: { Color: "Space Black" },
+          prices: [
+            { amount: 650000, currency_code: "bdt" },
+            { amount: 5800, currency_code: "usd" },
+          ],
+        },
+      ],
+      sales_channels: [{ id: defaultSalesChannel[0].id }],
+    },
+    {
+      title: "ASUS ROG Swift OLED PG32UCDM 32\" 4K 240Hz Gaming Monitor",
+      handle: "asus-rog-swift-oled-pg32ucdm",
+      category_ids: [categoryMap["Components"]],
+      description:
+        "[Demo] The undisputed king of 4K gaming monitors. 32-inch 4K QD-OLED panel with 240Hz refresh rate, 0.03ms response time, custom graphene heatsink, and 99% DCI-P3 color gamut.",
+      weight: 8500,
+      status: ProductStatus.PUBLISHED,
+      shipping_profile_id: shippingProfile.id,
+      metadata: {
+        specs: {
+          brand: "Asus",
+          display: "31.5\" 4K QD-OLED (3840x2160) 240Hz 0.03ms, DisplayHDR True Black 400",
+          ports: "2x HDMI 2.1, 1x DisplayPort 1.4, 1x USB-C (90W PD), 3x USB 3.2 Hub",
+          warranty: "3 Years Official ASUS Warranty (includes OLED Burn-in Coverage)",
+          isDemo: true,
+        },
+      },
+      images: [
+        {
+          url: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=1000&q=85",
+        },
+      ],
+      options: [{ title: "Color", values: ["Matte Black"] }],
+      variants: [
+        {
+          title: "Matte Black / 4K 240Hz",
+          sku: "ASUS-PG32UCDM",
+          options: { Color: "Matte Black" },
+          prices: [
+            { amount: 185000, currency_code: "bdt" },
+            { amount: 1650, currency_code: "usd" },
           ],
         },
       ],

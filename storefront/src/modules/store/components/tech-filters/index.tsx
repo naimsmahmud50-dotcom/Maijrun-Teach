@@ -162,11 +162,18 @@ export default function TechFilters({
           )}
         </button>
 
+        {/* Mobile quick sort dropdown */}
         <div className="shrink-0">
-          <SortProducts
-            sortBy={sortBy}
-            setQueryParams={(_k, v) => handleSortChange(v)}
-          />
+          <select
+            value={sortBy}
+            onChange={(e) => handleSortChange(e.target.value as SortOptions)}
+            className="min-h-[44px] px-3 py-2 text-xs font-semibold bg-slate-900 text-slate-200 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer"
+            aria-label="Sort products"
+          >
+            <option value="created_at">Latest Arrivals</option>
+            <option value="price_asc">Price: Low → High</option>
+            <option value="price_desc">Price: High → Low</option>
+          </select>
         </div>
       </div>
 
@@ -280,10 +287,6 @@ export default function TechFilters({
 
         {/* Sort selector for desktop */}
         <div className="mb-6">
-          <label className="block text-xs font-bold uppercase tracking-wider text-slate-200 mb-2 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-            Sort by
-          </label>
           <SortProducts
             sortBy={sortBy}
             setQueryParams={(_k, v) => handleSortChange(v)}
@@ -480,7 +483,7 @@ function renderFilterContent({
               onChange={toggleInStock}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-500/40 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500 border border-slate-700"></div>
+            <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-500/40 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500 peer-checked:shadow-[0_0_12px_rgba(6,182,212,0.4)] border border-slate-700"></div>
           </div>
         </label>
       </div>
@@ -498,14 +501,18 @@ function renderFilterContent({
               return (
                 <label
                   key={brand.value}
-                  className="flex items-center justify-between min-h-[38px] px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 cursor-pointer transition-all duration-150 group"
+                  className={`flex items-center justify-between min-h-[38px] px-2.5 py-1.5 rounded-lg cursor-pointer transition-all duration-150 group ${
+                    checked
+                      ? "bg-cyan-950/40 border border-cyan-500/30 text-white"
+                      : "hover:bg-slate-800/60 border border-transparent text-slate-200"
+                  }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
                       checked={checked}
                       onChange={() => toggleBrand(brand.value)}
-                      className="w-4 h-4 rounded border-slate-700 bg-slate-950 text-cyan-500 focus:ring-cyan-500/40 focus:ring-offset-0 focus:ring-2 accent-cyan-500 cursor-pointer"
+                      className="w-4 h-4 rounded border-slate-600 bg-slate-900 text-cyan-400 focus:ring-cyan-400/40 focus:ring-offset-0 focus:ring-2 accent-cyan-400 cursor-pointer"
                     />
                     <span
                       className={`text-sm transition-colors ${
@@ -517,7 +524,9 @@ function renderFilterContent({
                       {brand.label}
                     </span>
                   </div>
-                  <span className="text-xs text-slate-400 font-mono font-medium group-hover:text-cyan-400 transition-colors">
+                  <span className={`text-xs font-mono font-medium transition-colors ${
+                    checked ? "text-cyan-300 font-bold" : "text-slate-400 group-hover:text-cyan-400"
+                  }`}>
                     ({brand.count})
                   </span>
                 </label>
@@ -540,14 +549,18 @@ function renderFilterContent({
               return (
                 <label
                   key={proc.value}
-                  className="flex items-center justify-between min-h-[38px] px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 cursor-pointer transition-all duration-150 group"
+                  className={`flex items-center justify-between min-h-[38px] px-2.5 py-1.5 rounded-lg cursor-pointer transition-all duration-150 group ${
+                    checked
+                      ? "bg-cyan-950/40 border border-cyan-500/30 text-white"
+                      : "hover:bg-slate-800/60 border border-transparent text-slate-200"
+                  }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
                       checked={checked}
                       onChange={() => toggleProcessor(proc.value)}
-                      className="w-4 h-4 rounded border-slate-700 bg-slate-950 text-cyan-500 focus:ring-cyan-500/40 focus:ring-offset-0 focus:ring-2 accent-cyan-500 cursor-pointer"
+                      className="w-4 h-4 rounded border-slate-600 bg-slate-900 text-cyan-400 focus:ring-cyan-400/40 focus:ring-offset-0 focus:ring-2 accent-cyan-400 cursor-pointer"
                     />
                     <span
                       className={`text-sm transition-colors ${
@@ -559,7 +572,9 @@ function renderFilterContent({
                       {proc.label}
                     </span>
                   </div>
-                  <span className="text-xs text-slate-400 font-mono font-medium group-hover:text-cyan-400 transition-colors">
+                  <span className={`text-xs font-mono font-medium transition-colors ${
+                    checked ? "text-cyan-300 font-bold" : "text-slate-400 group-hover:text-cyan-400"
+                  }`}>
                     ({proc.count})
                   </span>
                 </label>
@@ -622,7 +637,7 @@ function renderFilterContent({
                 setLocalMinPrice("")
                 setLocalMaxPrice("100000")
               }}
-              className="text-xs py-1.5 px-2 bg-slate-800/90 hover:bg-slate-700 border border-slate-700/80 text-slate-200 hover:text-white rounded-lg transition-colors font-semibold"
+              className="text-xs py-1.5 px-2 bg-slate-800/90 hover:bg-cyan-950 hover:text-cyan-300 hover:border-cyan-500/40 border border-slate-700/80 text-slate-200 rounded-lg transition-colors font-semibold"
             >
               Under ৳1 Lakh
             </button>
@@ -632,7 +647,7 @@ function renderFilterContent({
                 setLocalMinPrice("100000")
                 setLocalMaxPrice("200000")
               }}
-              className="text-xs py-1.5 px-2 bg-slate-800/90 hover:bg-slate-700 border border-slate-700/80 text-slate-200 hover:text-white rounded-lg transition-colors font-semibold"
+              className="text-xs py-1.5 px-2 bg-slate-800/90 hover:bg-cyan-950 hover:text-cyan-300 hover:border-cyan-500/40 border border-slate-700/80 text-slate-200 rounded-lg transition-colors font-semibold"
             >
               ৳1L – ৳2L
             </button>
@@ -642,7 +657,7 @@ function renderFilterContent({
                 setLocalMinPrice("200000")
                 setLocalMaxPrice("")
               }}
-              className="col-span-2 text-xs py-1.5 px-2 bg-slate-800/90 hover:bg-slate-700 border border-slate-700/80 text-slate-200 hover:text-white rounded-lg transition-colors font-semibold"
+              className="col-span-2 text-xs py-1.5 px-2 bg-slate-800/90 hover:bg-cyan-950 hover:text-cyan-300 hover:border-cyan-500/40 border border-slate-700/80 text-slate-200 rounded-lg transition-colors font-semibold"
             >
               Above ৳2 Lakh (Pro/Gaming)
             </button>

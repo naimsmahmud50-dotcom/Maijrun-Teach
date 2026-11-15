@@ -43,12 +43,12 @@ export default function CategoryTemplate({
     >
       <RefinementList sortBy={sort} data-testid="sort-by-container" />
       <div className="w-full">
-        <div className="flex flex-row mb-8 text-2xl-semi gap-4">
+        <div className="flex flex-row mb-6 text-2xl-semi gap-3 items-center flex-wrap">
           {parents &&
             parents.map((parent) => (
-              <span key={parent.id} className="text-ui-fg-subtle">
+              <span key={parent.id} className="text-slate-400">
                 <LocalizedClientLink
-                  className="mr-4 hover:text-black"
+                  className="mr-3 hover:text-cyan-400 transition-colors font-medium text-sm"
                   href={`/categories/${parent.handle}`}
                   data-testid="sort-by-link"
                 >
@@ -57,10 +57,12 @@ export default function CategoryTemplate({
                 /
               </span>
             ))}
-          <h1 data-testid="category-page-title">{category.name}</h1>
+          <h1 data-testid="category-page-title" className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            {category.name}
+          </h1>
         </div>
         {category.description && (
-          <div className="mb-8 text-base-regular">
+          <div className="mb-6 text-sm text-slate-300 font-normal">
             <p>{category.description}</p>
           </div>
         )}

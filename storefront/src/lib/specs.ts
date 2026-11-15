@@ -67,7 +67,7 @@ export function getStockStatus(
     return {
       status: "out_of_stock",
       label: "Out of Stock",
-      badgeClass: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+      badgeClass: "bg-rose-950/70 text-rose-300 border-rose-500/40",
       availableQuantity: 0,
       isPurchaseable: false,
     }
@@ -77,7 +77,7 @@ export function getStockStatus(
     return {
       status: "low_stock",
       label: `Low Stock (${qty} remaining)`,
-      badgeClass: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+      badgeClass: "bg-amber-950/70 text-amber-300 border-amber-500/40",
       availableQuantity: qty,
       isPurchaseable: true,
     }
@@ -86,7 +86,7 @@ export function getStockStatus(
   return {
     status: "in_stock",
     label: "In Stock",
-    badgeClass: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    badgeClass: "bg-emerald-950/70 text-emerald-300 border-emerald-500/40",
     availableQuantity: qty,
     isPurchaseable: true,
   }

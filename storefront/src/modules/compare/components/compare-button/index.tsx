@@ -49,8 +49,8 @@ export default function CompareButton({
         onClick={handleToggle}
         className={`w-8 h-8 rounded-full flex items-center justify-center transition shadow-sm ${
           isSelected
-            ? "bg-sky-600 text-white"
-            : "bg-white/80 dark:bg-gray-800/80 backdrop-blur text-gray-600 dark:text-gray-300 hover:text-sky-600 border border-gray-200 dark:border-gray-700"
+            ? "bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20"
+            : "bg-slate-800 text-slate-200 hover:text-cyan-400 hover:bg-slate-700 border border-slate-700"
         } ${className}`}
         title={isSelected ? "Remove from Compare" : "Add to Compare"}
         aria-label="Toggle comparison"
@@ -66,11 +66,11 @@ export default function CompareButton({
       onClick={handleToggle}
       className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition ${
         isSelected
-          ? "bg-sky-600 text-white hover:bg-sky-500 shadow-sm"
-          : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+          ? "bg-cyan-500 text-slate-950 font-bold hover:bg-cyan-400 shadow-md shadow-cyan-500/20"
+          : "bg-slate-800 text-slate-200 hover:text-white hover:bg-slate-700 border border-slate-700"
       } ${className}`}
     >
-      <span>{isSelected ? "✓" : "⇄"}</span>
+      <span className={isSelected ? "text-slate-950" : "text-cyan-400"}>{isSelected ? "✓" : "⇄"}</span>
       <span>{isSelected ? "In Compare" : "Compare"}</span>
     </button>
   )

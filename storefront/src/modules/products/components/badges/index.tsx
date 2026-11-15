@@ -20,14 +20,14 @@ export function WarrantyBadge({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-medium rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 ${
+      className={`inline-flex items-center gap-1.5 font-medium rounded-full border border-cyan-500/40 bg-cyan-950/70 text-cyan-300 ${
         isSmall ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-xs sm:text-sm"
       } ${className}`}
       data-testid="warranty-badge"
       title={`Official Warranty: ${warranty}`}
     >
       <svg
-        className={isSmall ? "w-3 h-3" : "w-3.5 h-3.5"}
+        className={isSmall ? "w-3 h-3 text-cyan-400" : "w-3.5 h-3.5 text-cyan-400"}
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -58,11 +58,11 @@ export function StockBadge({
 }: StockBadgeProps) {
   const isSmall = size === "sm"
 
-  let dotColor = "bg-emerald-500"
+  let dotColor = "bg-emerald-400 shadow-[0_0_6px_#10b981]"
   if (stock.status === "low_stock") {
-    dotColor = "bg-amber-500"
+    dotColor = "bg-amber-400 shadow-[0_0_6px_#f59e0b]"
   } else if (stock.status === "out_of_stock") {
-    dotColor = "bg-rose-500"
+    dotColor = "bg-rose-400 shadow-[0_0_6px_#f43f5e]"
   }
 
   return (

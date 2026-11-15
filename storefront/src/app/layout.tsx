@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${heebo.variable}`} data-mode="dark">
+    <html lang="en" className={`${montserrat.variable} ${heebo.variable} dark`} data-mode="dark">
       <body className="font-sans bg-slate-950 text-slate-100 min-h-screen selection:bg-cyan-500 selection:text-black">
         <main className="relative">{props.children}</main>
       </body>

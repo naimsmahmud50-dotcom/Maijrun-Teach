@@ -34,8 +34,8 @@ export default async function ProductPreview({
           size="full"
           isFeatured={isFeatured}
         />
-        <div className="flex txt-compact-medium mt-4 justify-between items-start gap-2">
-          <Text className="text-ui-fg-subtle line-clamp-2" data-testid="product-title">
+        <div className="flex mt-3.5 justify-between items-start gap-2">
+          <Text className="text-slate-100 group-hover:text-cyan-400 font-semibold text-sm leading-snug line-clamp-2 transition-colors duration-150" data-testid="product-title">
             {product.title}
           </Text>
           <div className="flex items-center gap-x-2 shrink-0">

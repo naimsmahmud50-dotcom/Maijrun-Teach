@@ -85,32 +85,32 @@ export default async function StoreTemplate({
       {/* Main Product Listing Area */}
       <div className="w-full flex-1">
         {/* Title and Result Count Header */}
-        <div className="mb-6 flex flex-col small:flex-row small:items-center justify-between gap-2 pb-4 border-b border-zinc-100 dark:border-zinc-800">
+        <div className="mb-6 flex flex-col small:flex-row small:items-center justify-between gap-3 pb-4 border-b border-slate-800/80">
           <div>
             <h1
-              className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight"
+              className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"
               data-testid="store-page-title"
             >
               Laptops &amp; Desktops
             </h1>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+            <p className="text-sm text-slate-300 mt-1 font-normal">
               Official MAIJRUN Tech devices with manufacturer warranty &amp; express nationwide delivery
             </p>
           </div>
 
-          <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          <div className="text-xs font-medium text-slate-300 bg-slate-900/80 px-3.5 py-1.5 rounded-full border border-slate-800 shrink-0 self-start small:self-auto shadow-sm">
             {totalFiltered === 0 ? (
-              <span>0 products</span>
+              <span className="text-rose-400 font-semibold">0 products found</span>
             ) : hasActiveFilters ? (
               <span>
-                Showing <strong className="text-zinc-900 dark:text-zinc-100">{paginatedProducts.length}</strong> of{" "}
-                <strong className="text-zinc-900 dark:text-zinc-100">{totalFiltered}</strong> matching products
-                {" "}<span className="text-zinc-400">({allProducts.length} total)</span>
+                Showing <strong className="text-cyan-400 font-bold">{paginatedProducts.length}</strong> of{" "}
+                <strong className="text-white font-bold">{totalFiltered}</strong> matching products
+                {" "}<span className="text-slate-400">({allProducts.length} total)</span>
               </span>
             ) : (
               <span>
-                Showing <strong className="text-zinc-900 dark:text-zinc-100">{paginatedProducts.length}</strong> of{" "}
-                <strong className="text-zinc-900 dark:text-zinc-100">{allProducts.length}</strong> products
+                Showing <strong className="text-cyan-400 font-bold">{paginatedProducts.length}</strong> of{" "}
+                <strong className="text-white font-bold">{allProducts.length}</strong> products
               </span>
             )}
           </div>
@@ -118,8 +118,8 @@ export default async function StoreTemplate({
 
         {/* Empty State when 0 products match filters */}
         {totalFiltered === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 px-4 text-center bg-zinc-50 dark:bg-zinc-900/40 rounded-xl border border-dashed border-zinc-200 dark:border-zinc-800 my-4">
-            <div className="w-14 h-14 mb-4 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400">
+          <div className="flex flex-col items-center justify-center py-16 px-4 text-center bg-slate-900/60 backdrop-blur-md rounded-2xl border border-dashed border-slate-800 my-4 shadow-xl">
+            <div className="w-14 h-14 mb-4 rounded-full bg-slate-800/80 border border-slate-700/80 flex items-center justify-center text-cyan-400">
               <svg
                 className="w-7 h-7"
                 fill="none"
@@ -134,16 +134,16 @@ export default async function StoreTemplate({
                 />
               </svg>
             </div>
-            <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            <h2 className="text-lg font-bold text-white">
               No products match your filters
             </h2>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 max-w-md mt-1 mb-6">
+            <p className="text-sm text-slate-300 max-w-md mt-1 mb-6">
               We couldn&apos;t find any devices matching your exact brand, processor,
               price range, or stock criteria. Try relaxing your filters.
             </p>
             <LocalizedClientLink
               href="/store"
-              className="inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 text-sm font-semibold text-white bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 rounded-lg hover:bg-zinc-800 dark:hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 text-sm font-bold text-slate-950 bg-cyan-500 hover:bg-cyan-400 rounded-lg shadow-md shadow-cyan-500/20 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400"
             >
               Clear all filters
             </LocalizedClientLink>

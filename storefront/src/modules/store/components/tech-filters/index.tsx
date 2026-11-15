@@ -133,16 +133,16 @@ export default function TechFilters({
   return (
     <>
       {/* Mobile sticky filter bar */}
-      <div className="small:hidden w-full flex items-center justify-between gap-3 mb-6 p-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg">
+      <div className="small:hidden w-full flex items-center justify-between gap-3 mb-6 p-3 bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-xl shadow-lg">
         <button
           type="button"
           onClick={() => setIsMobileOpen(true)}
-          className="flex-1 min-h-[44px] px-4 py-2 flex items-center justify-center gap-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-medium text-sm rounded-md shadow-sm active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 min-h-[44px] px-4 py-2 flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm rounded-lg shadow-md shadow-cyan-500/20 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400"
           aria-expanded={isMobileOpen}
           aria-label="Open filter options"
         >
           <svg
-            className="w-4 h-4"
+            className="w-4 h-4 text-slate-950"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -156,7 +156,7 @@ export default function TechFilters({
           </svg>
           <span>Filters</span>
           {activeFilterCount > 0 && (
-            <span className="ml-1 px-2 py-0.5 text-xs font-semibold bg-blue-600 text-white rounded-full">
+            <span className="ml-1 px-2 py-0.5 text-xs font-bold bg-slate-950 text-cyan-400 rounded-full">
               {activeFilterCount}
             </span>
           )}
@@ -173,23 +173,24 @@ export default function TechFilters({
       {/* Mobile Drawer Backdrop & Panel */}
       {isMobileOpen && (
         <div
-          className="small:hidden fixed inset-0 z-50 flex flex-col justify-end bg-black/60 backdrop-blur-sm animate-fade-in-top"
+          className="small:hidden fixed inset-0 z-50 flex flex-col justify-end bg-black/80 backdrop-blur-md animate-fade-in-top"
           role="dialog"
           aria-modal="true"
           aria-label="Product Filters"
         >
           <div
-            className="w-full max-h-[85vh] bg-white dark:bg-zinc-900 rounded-t-2xl shadow-2xl flex flex-col overflow-hidden animate-slide-in"
+            className="w-full max-h-[85vh] bg-slate-900 border-t border-slate-800 rounded-t-2xl shadow-2xl flex flex-col overflow-hidden animate-slide-in text-white"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Drawer Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-200 dark:border-zinc-800">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800">
               <div className="flex items-center gap-2">
-                <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                  Filters
+                <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                  <span>Filters</span>
+                  <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
                 </h2>
                 {activeFilterCount > 0 && (
-                  <span className="px-2 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200 rounded-full">
+                  <span className="px-2 py-0.5 text-xs font-semibold bg-cyan-950 text-cyan-300 border border-cyan-500/40 rounded-full">
                     {activeFilterCount} active
                   </span>
                 )}
@@ -197,7 +198,7 @@ export default function TechFilters({
               <button
                 type="button"
                 onClick={() => setIsMobileOpen(false)}
-                className="min-h-[44px] min-w-[44px] flex items-center justify-center text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-400 hover:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
                 aria-label="Close filters"
               >
                 <svg
@@ -233,12 +234,12 @@ export default function TechFilters({
             </div>
 
             {/* Drawer Footer */}
-            <div className="p-4 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 flex items-center gap-3">
+            <div className="p-4 border-t border-slate-800 bg-slate-950 flex items-center gap-3">
               {activeFilterCount > 0 && (
                 <button
                   type="button"
                   onClick={clearAllFilters}
-                  className="min-h-[44px] flex-1 px-4 py-2.5 text-sm font-medium text-zinc-700 dark:text-zinc-300 bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="min-h-[44px] flex-1 px-4 py-2.5 text-sm font-semibold text-slate-200 bg-slate-800 border border-slate-700 rounded-lg hover:bg-slate-700 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
                 >
                   Clear all
                 </button>
@@ -246,7 +247,7 @@ export default function TechFilters({
               <button
                 type="button"
                 onClick={() => setIsMobileOpen(false)}
-                className="min-h-[44px] flex-1 px-4 py-2.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="min-h-[44px] flex-1 px-4 py-2.5 text-sm font-bold text-slate-950 bg-cyan-500 hover:bg-cyan-400 rounded-lg shadow-md shadow-cyan-500/20 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
               >
                 View {totalResults} {totalResults === 1 ? "Product" : "Products"}
               </button>
@@ -256,19 +257,21 @@ export default function TechFilters({
       )}
 
       {/* Desktop Sidebar */}
-      <aside className="hidden small:block w-[260px] shrink-0 mr-8 sticky top-24 self-start">
-        <div className="mb-6 pb-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-          <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-            <span>Filter Tech</span>
-            {isPending && (
-              <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping" />
+      <aside className="hidden small:block w-[280px] shrink-0 mr-8 sticky top-24 self-start bg-slate-900/70 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-5 shadow-2xl shadow-cyan-950/20">
+        <div className="mb-6 pb-4 border-b border-slate-800/80 flex items-center justify-between">
+          <h2 className="text-base font-bold text-white flex items-center gap-2">
+            <span className="bg-gradient-to-r from-white via-slate-100 to-cyan-300 bg-clip-text text-transparent">Filter Tech</span>
+            {isPending ? (
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+            ) : (
+              <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_6px_#22d3ee]" />
             )}
           </h2>
           {activeFilterCount > 0 && (
             <button
               type="button"
               onClick={clearAllFilters}
-              className="text-xs text-blue-600 dark:text-blue-400 hover:underline font-medium min-h-[44px] flex items-center"
+              className="text-xs text-cyan-400 hover:text-cyan-300 font-semibold hover:underline min-h-[44px] flex items-center transition-colors"
             >
               Clear all ({activeFilterCount})
             </button>
@@ -277,7 +280,8 @@ export default function TechFilters({
 
         {/* Sort selector for desktop */}
         <div className="mb-6">
-          <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">
+          <label className="block text-xs font-bold uppercase tracking-wider text-slate-200 mb-2 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
             Sort by
           </label>
           <SortProducts
@@ -345,29 +349,29 @@ function renderActiveChips({
   if (!hasChips) return null
 
   return (
-    <div className="mb-6 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+    <div className="mb-6 pb-4 border-b border-slate-800/80">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+        <span className="text-xs font-semibold text-slate-300">
           Active filters:
         </span>
         <button
           onClick={clearAll}
-          className="text-xs text-zinc-500 hover:text-red-600 transition-colors"
+          className="text-xs text-rose-400 hover:text-rose-300 font-semibold transition-colors"
         >
-          Reset
+          Reset all
         </button>
       </div>
       <div className="flex flex-wrap gap-1.5">
         {filters.brands.map((b) => (
           <span
             key={`chip-brand-${b}`}
-            className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-full bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+            className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-full bg-slate-800 text-cyan-300 border border-cyan-500/30"
           >
             {b}
             <button
               type="button"
               onClick={() => toggleBrand(b)}
-              className="hover:text-red-600 ml-0.5 focus:outline-none"
+              className="hover:text-rose-400 ml-0.5 focus:outline-none"
               aria-label={`Remove brand ${b}`}
             >
               ×
@@ -378,13 +382,13 @@ function renderActiveChips({
         {filters.processors.map((p) => (
           <span
             key={`chip-proc-${p}`}
-            className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-full bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300"
+            className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-full bg-slate-800 text-cyan-300 border border-cyan-500/30"
           >
             {p}
             <button
               type="button"
               onClick={() => toggleProcessor(p)}
-              className="hover:text-red-600 ml-0.5 focus:outline-none"
+              className="hover:text-rose-400 ml-0.5 focus:outline-none"
               aria-label={`Remove processor ${p}`}
             >
               ×
@@ -393,7 +397,7 @@ function renderActiveChips({
         ))}
 
         {(filters.minPrice !== undefined || filters.maxPrice !== undefined) && (
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-full bg-amber-50 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200">
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-full bg-slate-800 text-amber-300 border border-amber-500/30">
             {filters.minPrice !== undefined && filters.maxPrice !== undefined
               ? `৳${filters.minPrice.toLocaleString()} - ৳${filters.maxPrice.toLocaleString()}`
               : filters.minPrice !== undefined
@@ -402,7 +406,7 @@ function renderActiveChips({
             <button
               type="button"
               onClick={clearPrice}
-              className="hover:text-red-600 ml-0.5 focus:outline-none"
+              className="hover:text-rose-400 ml-0.5 focus:outline-none"
               aria-label="Remove price filter"
             >
               ×
@@ -411,12 +415,12 @@ function renderActiveChips({
         )}
 
         {filters.inStockOnly && (
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-full bg-emerald-50 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200">
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/40">
             In Stock Only
             <button
               type="button"
               onClick={toggleInStock}
-              className="hover:text-red-600 ml-0.5 focus:outline-none"
+              className="hover:text-rose-400 ml-0.5 focus:outline-none"
               aria-label="Remove in stock filter"
             >
               ×
@@ -454,16 +458,17 @@ function renderFilterContent({
   return (
     <>
       {/* 1. In-Stock Only Toggle */}
-      <div className="pt-1 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+      <div className="pt-1 pb-4 border-b border-slate-800/80">
         <label
           htmlFor="filter-in-stock"
           className="flex items-center justify-between min-h-[44px] cursor-pointer group"
         >
           <div className="flex flex-col">
-            <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 transition-colors">
+            <span className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">
               In Stock Only
             </span>
-            <span className="text-xs text-zinc-500 dark:text-zinc-400">
+            <span className="text-xs text-emerald-400 font-medium flex items-center gap-1.5 mt-0.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#10b981]"></span>
               {facets.inStockCount} available now
             </span>
           </div>
@@ -475,15 +480,16 @@ function renderFilterContent({
               onChange={toggleInStock}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-zinc-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-zinc-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-500/40 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-600 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500 border border-slate-700"></div>
           </div>
         </label>
       </div>
 
       {/* 2. Brand Multi-Select */}
       {facets.brands.length > 0 && (
-        <fieldset className="pt-1 pb-4 border-b border-zinc-200 dark:border-zinc-800">
-          <legend className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
+        <fieldset className="pt-1 pb-4 border-b border-slate-800/80">
+          <legend className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
             Brand
           </legend>
           <div className="space-y-1">
@@ -492,26 +498,26 @@ function renderFilterContent({
               return (
                 <label
                   key={brand.value}
-                  className="flex items-center justify-between min-h-[44px] px-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800/60 cursor-pointer transition-colors"
+                  className="flex items-center justify-between min-h-[38px] px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 cursor-pointer transition-all duration-150 group"
                 >
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
                       checked={checked}
                       onChange={() => toggleBrand(brand.value)}
-                      className="w-4 h-4 rounded border-zinc-300 dark:border-zinc-700 text-blue-600 focus:ring-blue-500 dark:bg-zinc-800"
+                      className="w-4 h-4 rounded border-slate-700 bg-slate-950 text-cyan-500 focus:ring-cyan-500/40 focus:ring-offset-0 focus:ring-2 accent-cyan-500 cursor-pointer"
                     />
                     <span
-                      className={`text-sm ${
+                      className={`text-sm transition-colors ${
                         checked
-                          ? "font-semibold text-zinc-900 dark:text-zinc-100"
-                          : "text-zinc-700 dark:text-zinc-300"
+                          ? "font-bold text-white"
+                          : "font-medium text-slate-200 group-hover:text-white"
                       }`}
                     >
                       {brand.label}
                     </span>
                   </div>
-                  <span className="text-xs text-zinc-400 font-mono">
+                  <span className="text-xs text-slate-400 font-mono font-medium group-hover:text-cyan-400 transition-colors">
                     ({brand.count})
                   </span>
                 </label>
@@ -523,8 +529,9 @@ function renderFilterContent({
 
       {/* 3. Processor Family */}
       {facets.processors.length > 0 && (
-        <fieldset className="pt-1 pb-4 border-b border-zinc-200 dark:border-zinc-800">
-          <legend className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
+        <fieldset className="pt-1 pb-4 border-b border-slate-800/80">
+          <legend className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
             Processor Family
           </legend>
           <div className="space-y-1">
@@ -533,26 +540,26 @@ function renderFilterContent({
               return (
                 <label
                   key={proc.value}
-                  className="flex items-center justify-between min-h-[44px] px-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800/60 cursor-pointer transition-colors"
+                  className="flex items-center justify-between min-h-[38px] px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 cursor-pointer transition-all duration-150 group"
                 >
                   <div className="flex items-center gap-2.5">
                     <input
                       type="checkbox"
                       checked={checked}
                       onChange={() => toggleProcessor(proc.value)}
-                      className="w-4 h-4 rounded border-zinc-300 dark:border-zinc-700 text-blue-600 focus:ring-blue-500 dark:bg-zinc-800"
+                      className="w-4 h-4 rounded border-slate-700 bg-slate-950 text-cyan-500 focus:ring-cyan-500/40 focus:ring-offset-0 focus:ring-2 accent-cyan-500 cursor-pointer"
                     />
                     <span
-                      className={`text-sm ${
+                      className={`text-sm transition-colors ${
                         checked
-                          ? "font-semibold text-zinc-900 dark:text-zinc-100"
-                          : "text-zinc-700 dark:text-zinc-300"
+                          ? "font-bold text-white"
+                          : "font-medium text-slate-200 group-hover:text-white"
                       }`}
                     >
                       {proc.label}
                     </span>
                   </div>
-                  <span className="text-xs text-zinc-400 font-mono">
+                  <span className="text-xs text-slate-400 font-mono font-medium group-hover:text-cyan-400 transition-colors">
                     ({proc.count})
                   </span>
                 </label>
@@ -564,7 +571,8 @@ function renderFilterContent({
 
       {/* 4. Price Range (BDT) */}
       <fieldset className="pt-1 pb-2">
-        <legend className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
+        <legend className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3 flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
           Price Range (BDT ৳)
         </legend>
         <div className="space-y-3">
@@ -572,7 +580,7 @@ function renderFilterContent({
             <div className="flex-1">
               <label
                 htmlFor="price-min-input"
-                className="block text-[11px] text-zinc-500 mb-1"
+                className="block text-[11px] font-semibold text-slate-300 mb-1"
               >
                 Min (৳)
               </label>
@@ -583,14 +591,14 @@ function renderFilterContent({
                 placeholder={facets.priceRange.min > 0 ? String(facets.priceRange.min) : "0"}
                 value={localMinPrice}
                 onChange={(e) => setLocalMinPrice(e.target.value)}
-                className="w-full min-h-[44px] px-3 py-1.5 text-sm bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-zinc-900 dark:text-zinc-100"
+                className="w-full min-h-[44px] px-3 py-1.5 text-sm bg-slate-950 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-cyan-500 text-white placeholder:text-slate-500 font-medium"
               />
             </div>
-            <span className="text-zinc-400 self-end mb-3">—</span>
+            <span className="text-slate-400 self-end mb-3 font-bold">—</span>
             <div className="flex-1">
               <label
                 htmlFor="price-max-input"
-                className="block text-[11px] text-zinc-500 mb-1"
+                className="block text-[11px] font-semibold text-slate-300 mb-1"
               >
                 Max (৳)
               </label>
@@ -601,7 +609,7 @@ function renderFilterContent({
                 placeholder={facets.priceRange.max > 0 ? String(facets.priceRange.max) : "500000"}
                 value={localMaxPrice}
                 onChange={(e) => setLocalMaxPrice(e.target.value)}
-                className="w-full min-h-[44px] px-3 py-1.5 text-sm bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-zinc-900 dark:text-zinc-100"
+                className="w-full min-h-[44px] px-3 py-1.5 text-sm bg-slate-950 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-cyan-500 text-white placeholder:text-slate-500 font-medium"
               />
             </div>
           </div>
@@ -614,7 +622,7 @@ function renderFilterContent({
                 setLocalMinPrice("")
                 setLocalMaxPrice("100000")
               }}
-              className="text-xs py-1.5 px-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+              className="text-xs py-1.5 px-2 bg-slate-800/90 hover:bg-slate-700 border border-slate-700/80 text-slate-200 hover:text-white rounded-lg transition-colors font-semibold"
             >
               Under ৳1 Lakh
             </button>
@@ -624,7 +632,7 @@ function renderFilterContent({
                 setLocalMinPrice("100000")
                 setLocalMaxPrice("200000")
               }}
-              className="text-xs py-1.5 px-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+              className="text-xs py-1.5 px-2 bg-slate-800/90 hover:bg-slate-700 border border-slate-700/80 text-slate-200 hover:text-white rounded-lg transition-colors font-semibold"
             >
               ৳1L – ৳2L
             </button>
@@ -634,7 +642,7 @@ function renderFilterContent({
                 setLocalMinPrice("200000")
                 setLocalMaxPrice("")
               }}
-              className="col-span-2 text-xs py-1.5 px-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+              className="col-span-2 text-xs py-1.5 px-2 bg-slate-800/90 hover:bg-slate-700 border border-slate-700/80 text-slate-200 hover:text-white rounded-lg transition-colors font-semibold"
             >
               Above ৳2 Lakh (Pro/Gaming)
             </button>

@@ -27,17 +27,17 @@ export default async function Footer() {
                 className="h-8 w-auto object-contain"
               />
             </LocalizedClientLink>
-            <p className="text-small-regular text-ui-fg-subtle">
+            <p className="text-small-regular text-slate-300">
               {brandConfig.description}
             </p>
-            <p className="text-xsmall-regular text-ui-fg-muted">
+            <p className="text-xsmall-regular text-slate-400">
               Email: {brandConfig.supportEmail} | {brandConfig.location}
             </p>
           </div>
           <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
             {productCategories && productCategories?.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
+                <span className="txt-small-plus text-white font-bold">
                   Categories
                 </span>
                 <ul
@@ -58,13 +58,13 @@ export default async function Footer() {
 
                     return (
                       <li
-                        className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
+                        className="flex flex-col gap-2 text-slate-300 txt-small"
                         key={c.id}
                       >
                         <LocalizedClientLink
                           className={clx(
-                            "hover:text-ui-fg-base",
-                            children && "txt-small-plus"
+                            "hover:text-cyan-400 transition-colors",
+                            children && "txt-small-plus text-slate-200"
                           )}
                           href={`/categories/${c.handle}`}
                           data-testid="category-link"
@@ -77,7 +77,7 @@ export default async function Footer() {
                               children.map((child) => (
                                 <li key={child.id}>
                                   <LocalizedClientLink
-                                    className="hover:text-ui-fg-base"
+                                    className="hover:text-cyan-400 transition-colors"
                                     href={`/categories/${child.handle}`}
                                     data-testid="category-link"
                                   >
@@ -95,12 +95,12 @@ export default async function Footer() {
             )}
             {collections && collections.length > 0 && (
               <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
+                <span className="txt-small-plus text-white font-bold">
                   Collections
                 </span>
                 <ul
                   className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
+                    "grid grid-cols-1 gap-2 text-slate-300 txt-small",
                     {
                       "grid-cols-2": (collections?.length || 0) > 3,
                     }
@@ -109,7 +109,7 @@ export default async function Footer() {
                   {collections?.slice(0, 6).map((c) => (
                     <li key={c.id}>
                       <LocalizedClientLink
-                        className="hover:text-ui-fg-base"
+                        className="hover:text-cyan-400 transition-colors"
                         href={`/collections/${c.handle}`}
                       >
                         {c.title}
@@ -120,12 +120,12 @@ export default async function Footer() {
               </div>
             )}
             <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">About {brandConfig.name}</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
+              <span className="txt-small-plus text-white font-bold">About {brandConfig.name}</span>
+              <ul className="grid grid-cols-1 gap-y-2 text-slate-300 txt-small">
                 <li>
                   <LocalizedClientLink
                     href="/about"
-                    className="hover:text-ui-fg-base"
+                    className="hover:text-cyan-400 transition-colors"
                   >
                     About Us
                   </LocalizedClientLink>
@@ -133,7 +133,7 @@ export default async function Footer() {
                 <li>
                   <LocalizedClientLink
                     href="/warranty"
-                    className="hover:text-ui-fg-base"
+                    className="hover:text-cyan-400 transition-colors"
                   >
                     Warranty Policy
                   </LocalizedClientLink>
@@ -143,7 +143,7 @@ export default async function Footer() {
                     href={brandConfig.socials.facebook}
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-ui-fg-base"
+                    className="hover:text-cyan-400 transition-colors"
                   >
                     Facebook Page
                   </a>
@@ -151,7 +151,7 @@ export default async function Footer() {
                 <li>
                   <a
                     href={`mailto:${brandConfig.supportEmail}`}
-                    className="hover:text-ui-fg-base"
+                    className="hover:text-cyan-400 transition-colors"
                   >
                     Contact Support
                   </a>
@@ -160,8 +160,8 @@ export default async function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-          <Text className="txt-compact-small">
+        <div className="flex w-full mb-16 justify-between text-slate-400">
+          <Text className="txt-compact-small text-slate-400">
             {brandConfig.footer.copyright}
           </Text>
           <BrandCTA />

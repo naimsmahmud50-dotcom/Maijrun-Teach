@@ -53,7 +53,7 @@ const ImageOrPlaceholder = ({
     <Image
       src={image}
       alt="Product Hardware Visual"
-      className="absolute inset-0 object-contain object-center p-3 group-hover:scale-108 transition-transform duration-500 ease-out filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)]"
+      className="absolute inset-0 object-contain object-center p-3 group-hover:scale-[1.06] transition-transform duration-500 ease-out filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)]"
       draggable={false}
       quality={85}
       sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"

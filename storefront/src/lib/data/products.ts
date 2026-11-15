@@ -89,6 +89,14 @@ export const listProducts = async ({
       if (queryParams && "handle" in queryParams && queryParams.handle) {
         products = products.filter((p) => p.handle === queryParams.handle)
       }
+      if (queryParams && "category_id" in queryParams && queryParams.category_id) {
+        const catIds = Array.isArray(queryParams.category_id)
+          ? queryParams.category_id
+          : [queryParams.category_id]
+        products = products.filter((p) =>
+          p.categories?.some((c: any) => catIds.includes(c.id))
+        )
+      }
       return {
         response: {
           products,

@@ -53,6 +53,16 @@ const COLOR_HEX_MAP: Record<string, string> = {
   "white smoke": "#EFEFEF",
   "trail loop": "#E06B26",
   "ocean band": "#0284C7",
+  "midnight ocean": "#0B2545",
+  "black eclipse": "#151515",
+  "classic black": "#111111",
+  "titanium silver": "#C5C7CB",
+  "ceramic white": "#F5F5F7",
+  "cyberpunk black": "#0F172A",
+  "stealth obsidian black": "#121214",
+  "cosmic white": "#F1F5F9",
+  navy: "#1B2A4A",
+  "crafted black": "#17181A",
 }
 
 export default function ColorSwatchSelector({

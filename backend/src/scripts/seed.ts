@@ -801,7 +801,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
       },
       images: [
         {
-          url: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=1000&q=85",
+          url: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=1000&q=85",
         },
       ],
       options: [{ title: "Color", values: ["Natural Titanium", "Black Titanium"] }],

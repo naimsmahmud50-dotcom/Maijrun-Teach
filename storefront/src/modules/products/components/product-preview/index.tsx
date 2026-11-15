@@ -4,11 +4,17 @@ import { getProductPrice } from "@lib/util/get-product-price"
 import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { parseProductSpecs, getProductStockInfo } from "@lib/specs"
-import { StockBadge } from "@modules/products/components/badges"
+import {
+  StockBadge,
+  WarrantyBadge,
+  FlagshipBadge,
+  OfficialGlobalBadge,
+} from "@modules/products/components/badges"
 import CompareButton from "@/modules/compare/components/compare-button"
 import Image from "next/image"
 import PreviewPrice from "./price"
 import PlaceholderImage from "@modules/common/icons/placeholder-image"
+import ProductCardActions, { QuickViewTrigger } from "./product-card-actions"
 
 function getSpecTags(specs: any, categoryName = "", title = "") {
   const tags: string[] = []
@@ -90,33 +96,37 @@ export default async function ProductPreview({
       {/* Top Header Bar: Badges & Compare Button */}
       <div className="flex items-center justify-between gap-1.5 mb-2.5">
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-cyan-950/90 text-cyan-300 border border-cyan-500/40 shadow-[0_0_10px_rgba(6,182,212,0.25)]">
-            <span className="text-cyan-400">★</span> OFFICIAL GLOBAL
-          </span>
+          <OfficialGlobalBadge size="sm" />
+          <FlagshipBadge tier="FLAGSHIP TIER" size="sm" />
           <StockBadge stock={stock} size="sm" />
         </div>
         <CompareButton product={product} variant="icon" />
       </div>
 
-      {/* Product Image Stage */}
-      <LocalizedClientLink
-        href={`/products/${product.handle}`}
-        className="block relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-gradient-to-b from-slate-900/90 via-slate-950 to-black border border-slate-800/70 group-hover:border-cyan-500/30 transition-all p-3"
-      >
-        {initialImage ? (
-          <Image
-            src={initialImage}
-            alt={product.title}
-            fill
-            className="object-contain p-2 group-hover:scale-108 transition-transform duration-500 ease-out filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)]"
-            sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <PlaceholderImage size={24} />
-          </div>
-        )}
-      </LocalizedClientLink>
+      {/* Product Image Stage with Interactive Quick View Trigger */}
+      <div className="relative group/stage">
+        <LocalizedClientLink
+          href={`/products/${product.handle}`}
+          className="block relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-gradient-to-b from-slate-900/90 via-slate-950 to-black border border-slate-800/70 group-hover:border-cyan-500/30 transition-all p-3"
+        >
+          {initialImage ? (
+            <Image
+              src={initialImage}
+              alt={product.title}
+              fill
+              className="object-contain p-2 group-hover:scale-[1.06] transition-transform duration-500 ease-out filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)]"
+              sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <PlaceholderImage size={24} />
+            </div>
+          )}
+        </LocalizedClientLink>
+
+        {/* Hover Quick View Trigger */}
+        <QuickViewTrigger product={product} />
+      </div>
 
       {/* Brand & Category Label */}
       <div className="flex items-center justify-between text-[11px] mt-3 mb-1">
@@ -161,13 +171,7 @@ export default async function ProductPreview({
           {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
         </div>
         {specs?.warranty ? (
-          <div
-            className="text-[10px] text-slate-400 flex items-center gap-1 text-right max-w-[130px] font-medium"
-            title={specs.warranty}
-          >
-            <span className="text-cyan-400 shrink-0">🛡️</span>
-            <span className="truncate">{specs.warranty}</span>
-          </div>
+          <WarrantyBadge warranty={specs.warranty} size="sm" />
         ) : (
           <div className="text-[10px] text-emerald-400 font-semibold flex items-center gap-1">
             <span>✓ Genuine Global</span>
@@ -175,16 +179,16 @@ export default async function ProductPreview({
         )}
       </div>
 
-      {/* Instant Interactive CTA Link */}
-      <LocalizedClientLink
-        href={`/products/${product.handle}`}
-        className="mt-3 w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-slate-800/90 group-hover:bg-cyan-500 text-slate-200 group-hover:text-slate-950 font-bold text-xs border border-slate-700/80 group-hover:border-cyan-400 transition-all duration-200 shadow-sm"
-      >
-        <span>Explore Flagship</span>
-        <span className="transition-transform group-hover:translate-x-1 duration-200">
-          →
-        </span>
-      </LocalizedClientLink>
+      {/* 0% EMI Teaser */}
+      {cheapestPrice?.calculated_amount && cheapestPrice.calculated_amount >= 10000 && (
+        <div className="text-[11px] text-cyan-400 font-semibold mt-1 flex items-center gap-1">
+          <span className="text-xs">⚡</span>
+          <span>0% EMI from ৳{Math.round(cheapestPrice.calculated_amount / 24).toLocaleString("en-BD")}/mo</span>
+        </div>
+      )}
+
+      {/* Instant Action CTA Buttons (Add to Cart / Buy Now) */}
+      <ProductCardActions product={product} />
     </div>
   )
 }

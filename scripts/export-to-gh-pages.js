@@ -50,6 +50,16 @@ const STATIC_PAGES = [
   'terms-of-service'
 ]
 
+const DEMO_CATEGORIES = [
+  'laptops',
+  'smartphones',
+  'tablets',
+  'desktops',
+  'accessories',
+  'audio',
+  'components'
+]
+
 async function copyDir(src, dest) {
   await fs.promises.mkdir(dest, { recursive: true })
   const entries = await fs.promises.readdir(src, { withFileTypes: true })
@@ -150,6 +160,18 @@ async function main() {
     // US product
     const usHtml = await fetchRoute(`/us/products/${handle}`)
     await writeHtml(`us/products/${handle}/index.html`, usHtml)
+    count++
+  }
+
+  // Export all Category pages
+  for (const cat of DEMO_CATEGORIES) {
+    const bdCatHtml = await fetchRoute(`/bd/categories/${cat}`)
+    await writeHtml(`bd/categories/${cat}/index.html`, bdCatHtml)
+    await writeHtml(`categories/${cat}/index.html`, bdCatHtml)
+    count += 2
+
+    const usCatHtml = await fetchRoute(`/us/categories/${cat}`)
+    await writeHtml(`us/categories/${cat}/index.html`, usCatHtml)
     count++
   }
 

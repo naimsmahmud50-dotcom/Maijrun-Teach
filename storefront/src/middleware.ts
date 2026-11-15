@@ -79,7 +79,7 @@ async function getCountryCode(
 
     const urlCountryCode = request.nextUrl.pathname.split("/")[1]?.toLowerCase()
 
-    if (urlCountryCode && (regionMap.has(urlCountryCode) || urlCountryCode === DEFAULT_REGION)) {
+    if (urlCountryCode && (regionMap.has(urlCountryCode) || urlCountryCode === "bd" || urlCountryCode === "us" || urlCountryCode === DEFAULT_REGION)) {
       countryCode = urlCountryCode
     } else if (vercelCountryCode && regionMap.has(vercelCountryCode)) {
       countryCode = vercelCountryCode
@@ -120,7 +120,10 @@ export async function middleware(request: NextRequest) {
     (regionMap && (await getCountryCode(request, regionMap))) || DEFAULT_REGION
 
   const urlCountryCode = request.nextUrl.pathname.split("/")[1]?.toLowerCase()
-  const urlHasCountryCode = Boolean(urlCountryCode && urlCountryCode === countryCode)
+  const urlHasCountryCode = Boolean(
+    urlCountryCode &&
+      (urlCountryCode === countryCode || urlCountryCode === "bd" || urlCountryCode === "us")
+  )
 
   // if one of the country codes is in the url and the cache id is set, return next
   if (urlHasCountryCode && cacheIdCookie) {

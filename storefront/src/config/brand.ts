@@ -3,6 +3,8 @@
  * Edit brand properties, contact details, social links, and theme colors in one place.
  */
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
+
 export const brandConfig = {
   name: "MAIJRUN Tech",
   shortName: "MAIJRUN",
@@ -28,8 +30,8 @@ export const brandConfig = {
   logo: {
     name: "MAIJRUN",
     subtitle: "TECH",
-    src: "/logo.svg",
-    favicon: "/favicon.ico",
+    src: `${basePath}/logo.svg`,
+    favicon: `${basePath}/favicon.svg`,
   },
   footer: {
     copyright: `© ${new Date().getFullYear()} MAIJRUN Tech. All rights reserved.`,
